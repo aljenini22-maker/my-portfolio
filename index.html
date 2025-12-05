@@ -1335,7 +1335,7 @@
                 <a href="#contact">اتصل بي</a>
             </div>
             
-            <a href="#contact" class="nav-contact">تعاون معي</a>
+            <a href="#contact" class="nav-contact"> لنعمل معاً</a>
         </div>
     </nav>
     
@@ -1411,7 +1411,7 @@
                 <div class="stat-label">عميل راضي</div>
             </div>
             <div class="stat-card animate__animated" data-animate="fadeInUp">
-                <div class="stat-number" data-count="3">0</div>
+                <div class="stat-number" data-count="4">0</div>
                 <div class="stat-label">سنوات خبرة</div>
             </div>
             <div class="stat-card animate__animated" data-animate="fadeInUp">
@@ -1461,7 +1461,7 @@
                             باستخدام MySQL، مع تطبيق معايير الأمان الأساسية.</p>
                         <div class="project-tech">
                             <span><i class="fab fa-php"></i> PHP</span>
-                            <span><i class="fab fa-python"></i> Django</span>
+                            <span class="dotnet" ><i class="fab fa-js"></i> JavaScript & HTML</span>
                             <span><i class="fab fa-react"></i> React</span>
                             <span class="sqlserver"><i class="fas fa-database"></i> MySQL</span>
                         </div>
@@ -1480,10 +1480,10 @@
                         <h3 class="project-title">تطبيق إدارة المهام الذكي</h3>
                         <p class="project-desc">تطبيق موبايل متقدم لإدارة المهام الشخصية والفريقية مع مزامنة فورية، إشعارات ذكية، إحصائيات أداء، وتكامل مع أدوات الإنتاجية الشهيرة.</p>
                         <div class="project-tech">
-                            <span><i class="fab fa-flutter"></i> Flutter</span>
-                            <span><i class="fas fa-fire"></i> Firebase</span>
-                            <span><i class="fas fa-code"></i> Dart</span>
-                            <span><i class="fas fa-cloud"></i> Cloud Functions</span>
+                            <span class="wpf" ><i class="fab fa-flutter"></i> Flutter</span>
+                            <span class="security"><i class="fas fa-fire"></i> Firebase</span>
+                            <span class="dotnet" ><i class="fas fa-code"></i> Dart</span>
+                            <span class="sqlserver"><i class="fas fa-cloud"></i> Cloud Functions</span>
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link"><i class="fab fa-github"></i> الكود المصدري</a>
@@ -1500,10 +1500,10 @@
                         <h3 class="project-title">منصة تحليلات البيانات</h3>
                         <p class="project-desc">منصة متقدمة لتحليل البيانات الضخمة وتقديم رؤى باستخدام خوارزميات الذكاء الاصطناعي وتصورات بيانات تفاعلية مع إمكانية تصدير التقارير.</p>
                         <div class="project-tech">
-                            <span><i class="fab fa-python"></i> Python</span>
-                            <span><i class="fas fa-chart-bar"></i> Pandas</span>
-                            <span><i class="fas fa-brain"></i> TensorFlow</span>
-                            <span><i class="fas fa-tachometer-alt"></i> Dash</span>
+                            <span class="security"><i class="fab fa-python"></i> Python</span>
+                            <span class="dotnet" ><i class="fas fa-chart-bar"></i> Pandas</span>
+                            <span class="sqlserver"><i class="fas fa-brain"></i> TensorFlow</span>
+                            <span class="wpf" ><i class="fas fa-tachometer-alt"></i> Dash</span>
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link"><i class="fab fa-github"></i> الكود المصدري</a>
@@ -1525,8 +1525,8 @@
                         نتائج الأمان بشكل واضح.</p>
                         <div class="project-tech">
                             <span class="python"><i class="fab fa-python"></i> Python</span>
-                            <span><i class="fas fa-plug"></i> Socket</span>
-                            <span><i class="fas fa-satellite-dish"></i> Nmap</span>
+                            <span class="csharp"><i class="fas fa-plug"></i> Socket</span>
+                            <span class="dotnet" ><i class="fas fa-satellite-dish"></i> Nmap</span>
                             <span class="security"><i class="fas fa-shield-alt"></i> Security</span>
                         </div>
                         <div class="project-links">
@@ -1750,7 +1750,7 @@
                     <p class="service-desc"> تطوير تطبيقات سطح المكتب تفاعلية باستخدام C# وPython (Tkinter & PyQt)، أدّت إلى أتمتة مهام
                         إدخال البيانات بنسبة 70% وتقليل الوقت المستغرق بنسبة 50%</p>
                 </div>
-
+  <!--
                 <div class="service-card animate__animated" data-animate="fadeInUp">
                     <div class="service-icon">
                         <i class="fas fa-shield-alt"></i>
@@ -1759,7 +1759,7 @@
                     <p class="service-desc">بناء أدوات وأسكربتات أمنية لاكتشاف الثغرات الأمنية وفحص الشبكات والأنظمة باستخدام Python وتقنيات الأمان المتقدمة.</p>
                 </div>
             </div>
-        </div>
+        </div>-->
     </section>
     
     <!-- قسم الاتصال -->
@@ -1884,28 +1884,44 @@
 <script>
     // نظام إرسال واستقبال الرسائل
     let messages = JSON.parse(localStorage.getItem('messages')) || [];
-    
-    // تأثير كتابة النص
-const typewriterText = "مطور ويب•مصمم تطبيقات•محلل بيانات<br> • مطور حلول متكاملة";
+  // ============== متغير النص المعدل (تأكد من وجود <br> في المكان المطلوب) ==============
+const typewriterText = "مطور ويب • مصمم تطبيقات • محلل بيانات <br> • مطور حلول متكاملة";
 let typewriterIndex = 0;
 const typewriterElement = document.getElementById('typewriter');
 
+// ============== دالة الكتابة المُعدَّلة والمُحسَّنة ==============
 function typeWriter() {
     if (typewriterIndex < typewriterText.length) {
+        
         let char = typewriterText.charAt(typewriterIndex);
 
-        // 💡 إضافة منطق التعامل مع وسم <br>
+        // 1. 💡 معالجة وسم <br> لتقسيم السطر
         if (typewriterText.substring(typewriterIndex, typewriterIndex + 4) === '<br>') {
             typewriterElement.innerHTML += '<br>';
             typewriterIndex += 4; // تخطي 4 أحرف: <, b, r, >
-            setTimeout(typeWriter, 50); // يمكن تقليل التأخير لجعل الانتقال أسرع
-        } else {
+            setTimeout(typeWriter, 50); // تأخير قصير للانتقال للسطر التالي
+            return; // إنهاء التنفيذ هنا
+        } 
+        
+        // 2. 💡 معالجة المسافة غير القابلة للكسر (&nbsp;)
+        // على الرغم من أن هذا ليس ضرورياً في هذه الدالة، لكنه قد يكون مفيداً في السياق العام
+        else if (typewriterText.substring(typewriterIndex, typewriterIndex + 6) === '&nbsp;') {
+            typewriterElement.innerHTML += '&nbsp;';
+            typewriterIndex += 6; // تخطي 6 أحرف
+            setTimeout(typeWriter, 50); 
+            return;
+        }
+        
+        // 3. 💡 طباعة الحرف العادي (افتراضياً)
+        else {
             typewriterElement.innerHTML += char;
             typewriterIndex++;
             setTimeout(typeWriter, 100);
+            return;
         }
 
     } else {
+        // منطق التكرار بعد الانتهاء
         setTimeout(() => {
             typewriterElement.innerHTML = '';
             typewriterIndex = 0;
@@ -1913,7 +1929,6 @@ function typeWriter() {
         }, 2000);
     }
 }
-    
     // كود C# للمحاكاة في الطرفية
     const csharpCode = `
 dev@terminal:~$ dotnet run AccountingSystem.cs
@@ -2194,7 +2209,7 @@ dev@terminal:~$
             });
         });
     }
-    
+  
     // إظهار الإشعارات
     function showNotification(message, type = 'info') {
         const existingNotification = document.querySelector('.notification');
@@ -2236,17 +2251,17 @@ dev@terminal:~$
     // تحديث عدد الرسائل غير المقروءة
     function updateUnreadCount() {
         const unreadCount = messages.filter(msg => !msg.read).length;
-        const messageIndicator = document.getElementById('messageIndicator');
-        const messageCount = document.getElementById('messageCount');
+       // const messageIndicator = document.getElementById('messageIndicator');
+      //  const messageCount = document.getElementById('messageCount');
         
         if (unreadCount > 0) {
-            messageIndicator.style.display = 'flex';
-            messageCount.textContent = unreadCount;
+           // messageIndicator.style.display = 'flex';
+           // messageCount.textContent = unreadCount;
         } else {
             messageIndicator.style.display = 'none';
         }
     }
-    
+    /*
     // لوحة عرض الرسائل
     function showMessagesPanel() {
         const existingPanel = document.querySelector('.messages-panel');
@@ -2362,7 +2377,7 @@ dev@terminal:~$
             });
         });
     }
-    
+    */
     // إعداد نموذج الاتصال المحسن
     function setupContactForm() {
         const contactForm = document.getElementById('contactForm');
@@ -2451,7 +2466,7 @@ dev@terminal:~$
                 name: messageData.name,
                 to_email: nn,
                 title: messageData.subject,
-                message: `عزيزي/عزيزتي ${nn},\n\nشكراً لتواصلك معي. لقد تلقيت رسالتك وسأقوم بالرد عليك في أقرب وقت ممكن.\n\nرسالتك: "${messageData.message.substring(0, 100)}..."\n\nمع خالص التقدير،\nأحمد الجنيني\nمطور برمجيات`,
+                message: `عزيزي/عزيزتي ${nn},\n\nشكراً لتواصلك معي. لقد تلقيت رسالتك وسأقوم بالرد عليك في أقرب وقت ممكن.\n\nرسالتك: "${ messageData.message.substring(0, 100)  }..."\n\nمع خالص التقدير،\nأحمد الجنيني\nمطور برمجيات`,
                 date: new Date().toLocaleString('ar-SA')
             };
             
@@ -2477,7 +2492,7 @@ dev@terminal:~$
                 to_email:  nn, // بريدك أنت
                 name: messageData.name,
                 to_email: nn, // بريد الزائر
-                subject: messageData.subject || "رسالة جديدة من موقع أحمد الجنيني",
+                title: messageData.subject || "رسالة جديدة من موقع أحمد الجنيني",
                 message: messageData.message,
                 date: new Date().toLocaleString('ar-SA'),
                 phone: "لم يذكر",
@@ -2518,8 +2533,8 @@ dev@terminal:~$
                 };
                 
                 // 2. إرسال الرسالة للمالك (أنت)
-                const ownerResult = await sendToOwner(fullMessageData,fullMessageData.to_email);
-                fullMessageData.emailSentToOwner = ownerResult;
+           //     const ownerResult = await sendToOwner(fullMessageData,fullMessageData.to_email);
+            //    fullMessageData.emailSentToOwner = ownerResult;
                 
                 // 3. إرسال تأكيد للزائر
                 const visitorResult = await sendConfirmationToVisitor(fullMessageData,fullMessageData.to_email);
@@ -2617,7 +2632,7 @@ dev@terminal:~$
         updateUnreadCount();
         
         // إضافة حدث لمؤشر الرسائل
-        document.getElementById('messageIndicator').addEventListener('click', showMessagesPanel);
+       // document.getElementById('messageIndicator').addEventListener('click', showMessagesPanel);
         
         // أحداث التمرير
         window.addEventListener('scroll', () => {
@@ -2665,11 +2680,4 @@ dev@terminal:~$
     });
 </script>
 </body>
-
 </html>
-
-
-
-
-
-
