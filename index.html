@@ -1886,23 +1886,33 @@
     let messages = JSON.parse(localStorage.getItem('messages')) || [];
     
     // تأثير كتابة النص
-    const typewriterText = "مطور ويب • مصمم تطبيقات /n • محلل بيانات • مطور حلول متكاملة";
-    let typewriterIndex = 0;
-    const typewriterElement = document.getElementById('typewriter');
-    
-    function typeWriter() {
-        if (typewriterIndex < typewriterText.length) {
-            typewriterElement.innerHTML += typewriterText.charAt(typewriterIndex);
+const typewriterText = "مطور ويب • مصمم تطبيقات • محلل بيانات <br> • مطور حلول متكاملة";
+let typewriterIndex = 0;
+const typewriterElement = document.getElementById('typewriter');
+
+function typeWriter() {
+    if (typewriterIndex < typewriterText.length) {
+        let char = typewriterText.charAt(typewriterIndex);
+
+        // 💡 إضافة منطق التعامل مع وسم <br>
+        if (typewriterText.substring(typewriterIndex, typewriterIndex + 4) === '<br>') {
+            typewriterElement.innerHTML += '<br>';
+            typewriterIndex += 4; // تخطي 4 أحرف: <, b, r, >
+            setTimeout(typeWriter, 50); // يمكن تقليل التأخير لجعل الانتقال أسرع
+        } else {
+            typewriterElement.innerHTML += char;
             typewriterIndex++;
             setTimeout(typeWriter, 100);
-        } else {
-            setTimeout(() => {
-                typewriterElement.innerHTML = '';
-                typewriterIndex = 0;
-                setTimeout(typeWriter, 500);
-            }, 2000);
         }
+
+    } else {
+        setTimeout(() => {
+            typewriterElement.innerHTML = '';
+            typewriterIndex = 0;
+            setTimeout(typeWriter, 500);
+        }, 2000);
     }
+}
     
     // كود C# للمحاكاة في الطرفية
     const csharpCode = `
@@ -2657,5 +2667,6 @@ dev@terminal:~$
 </body>
 
 </html>
+
 
 
