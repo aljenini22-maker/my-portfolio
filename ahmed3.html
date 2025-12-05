@@ -1,0 +1,2658 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أحمد الجنيني | مطور برمجيات متكامل الحلول</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --tech-blue: #60a5fa;
+            --tech-green: #10b981;
+            --tech-purple: #8b5cf6;
+            --tech-orange: #f59e0b;
+            --tech-csharp: #9b4993;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --gradient-dark: linear-gradient(135deg, #1e40af, #5b21b6);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(15px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(15, 23, 42, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+        }
+        
+        .logo-code {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: var(--accent);
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-contact {
+            background: var(--gradient);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .nav-contact:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            background: var(--gradient-dark);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* أنماط الرسائل والإشعارات */
+        .notification {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            min-width: 300px;
+            max-width: 500px;
+            opacity: 0;
+            transform: translateX(-50%) translateY(-20px);
+            transition: all 0.3s ease;
+        }
+        
+        .notification.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-grow: 1;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 5px;
+        }
+        
+        .notification-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        
+        .notification-error {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+        
+        .notification-info {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+        
+        /* مؤشر الرسائل */
+        .message-indicator {
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            background: #ef4444;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .message-indicator:hover {
+            transform: scale(1.1);
+        }
+        
+        /* لوحة الرسائل */
+        .messages-panel {
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            right: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            z-index: 1999;
+            max-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .messages-panel.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .messages-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .messages-header h3 {
+            margin: 0;
+            color: white;
+        }
+        
+        .close-panel {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .close-panel:hover {
+            color: var(--accent);
+        }
+        
+        .messages-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .message-item {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .message-item.unread {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+        }
+        
+        .message-item:hover {
+            transform: translateX(5px);
+            border-color: var(--accent);
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .message-sender strong {
+            display: block;
+            color: white;
+            margin-bottom: 5px;
+        }
+        
+        .message-sender small {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .message-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .message-subject {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .message-preview {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .message-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .message-actions button {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: var(--accent);
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+        
+        .message-actions button:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .delete-btn {
+            background: rgba(239, 68, 68, 0.1) !important;
+            border-color: rgba(239, 68, 68, 0.3) !important;
+            color: #ef4444 !important;
+        }
+        
+        .empty-messages {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+        
+        /* قسم البطل */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+            background: rgba(139, 92, 246, 0.1);
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 4s;
+            background: rgba(16, 185, 129, 0.1);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(90deg, #60a5fa, #8b5cf6, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+        
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+        
+        .hero-text .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 90%;
+        }
+        
+        .typewriter {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            height: 40px;
+            margin-bottom: 30px;
+            border-right: 3px solid var(--accent);
+            padding-right: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            background: var(--gradient-dark);
+        }
+        
+        .btn-secondary {
+            background-color: rgba(30, 41, 59, 0.7);
+            color: var(--text-primary);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .tech-item {
+            background-color: rgba(30, 41, 59, 0.7);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+        }
+        
+        .hero-visual {
+            position: relative;
+        }
+        
+        .code-terminal {
+            background-color: rgba(15, 23, 42, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .terminal-header {
+            background-color: rgba(30, 41, 59, 0.9);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .terminal-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .terminal-content {
+            padding: 25px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        /* ألوان الكود */
+        .code-keyword { color: #ff6b8b; }
+        .code-function { color: #61dafb; }
+        .code-string { color: #98c379; }
+        .code-number { color: #d19a66; }
+        .code-comment { color: #5c6370; font-style: italic; }
+        .code-operator { color: #56b6c2; }
+        .code-variable { color: #e06c75; }
+        .code-class { color: #e5c07b; }
+        .code-prompt { color: #60a5fa; font-weight: bold; }
+        .code-path { color: #10b981; }
+        .code-type { color: #c678dd; }
+        
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: var(--accent);
+            margin-left: 2px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .stats-section {
+            padding: 80px 0;
+            background-color: rgba(15, 23, 42, 0.7);
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: rgba(30, 41, 59, 0.5);
+            border-radius: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+        
+        .projects-section {
+            padding: 120px 0;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 30px auto 0;
+            line-height: 1.6;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 40px;
+        }
+        
+        .project-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent);
+        }
+        
+        .project-header {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(15, 23, 42, 0.8) 100%);
+        }
+        
+        .project-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: white;
+            z-index: 1;
+        }
+        
+        .project-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .project-desc {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .project-tech span {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .project-tech .csharp {
+            background-color: rgba(155, 73, 147, 0.2);
+            color: #9b4993;
+            border: 1px solid rgba(155, 73, 147, 0.4);
+        }
+        
+        .project-tech .dotnet {
+            background-color: rgba(81, 43, 212, 0.2);
+            color: #512bd4;
+            border: 1px solid rgba(81, 43, 212, 0.4);
+        }
+        
+        .project-tech .sqlserver {
+            background-color: rgba(204, 0, 0, 0.2);
+            color: #cc0000;
+            border: 1px solid rgba(204, 0, 0, 0.4);
+        }
+        
+        .project-tech .wpf {
+            background-color: rgba(0, 120, 215, 0.2);
+            color: #0078d7;
+            border: 1px solid rgba(0, 120, 215, 0.4);
+        }
+        
+        .project-tech .python {
+            background-color: rgba(53, 114, 165, 0.2);
+            color: #3776ab;
+            border: 1px solid rgba(53, 114, 165, 0.4);
+        }
+        
+        .project-tech .security {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .project-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            padding: 10px 0;
+        }
+        
+        .project-link:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .skills-section {
+            padding: 120px 0;
+            background-color: rgba(15, 23, 42, 0.7);
+            position: relative;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .skill-category {
+            background-color: rgba(30, 41, 59, 0.7);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .skill-title {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .skill-list {
+            list-style-type: none;
+        }
+        
+        .skill-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .skill-name {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .skill-level-bar {
+            width: 150px;
+            height: 8px;
+            background-color: rgba(59, 130, 246, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-level-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+        
+        .services-section {
+            padding: 120px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .service-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            margin: 0 auto 30px;
+        }
+        
+        .service-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .service-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .contact-section {
+            padding: 120px 0;
+            background-color: rgba(15, 23, 42, 0.7);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .contact-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .contact-details {
+            margin-top: 40px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .contact-detail i {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .contact-form {
+            background-color: rgba(30, 41, 59, 0.7);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 18px;
+            background-color: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        .submit-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: var(--gradient-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        footer {
+            background-color: rgba(15, 23, 42, 0.95);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .footer-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(30, 41, 59, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+            
+            .skills-container, .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-contact {
+                display: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .project-card {
+                margin-bottom: 30px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .messages-panel {
+                top: 60px;
+                left: 10px;
+                right: 10px;
+                max-height: 80vh;
+            }
+            
+            .notification {
+                left: 10px;
+                right: 10px;
+                max-width: none;
+                transform: translateX(0) translateY(-20px);
+            }
+            
+            .notification.show {
+                transform: translateX(0) translateY(0);
+            }
+            
+            .terminal-content {
+                font-size: 12px;
+                padding: 15px;
+                height: 350px;
+            }
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-secondary);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
+        }
+    </style>
+</head>
+<body>
+    <!-- جسيمات الخلفية -->
+    <div class="particles" id="particles-js"></div>
+    
+    <!-- شريط التنقل -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-code">&lt;/&gt;</span>
+                <span>أحمد الجنيني</span>
+                <div class="message-indicator" id="messageIndicator" style="display: none;">
+                    <span id="messageCount">0</span>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="active">الرئيسية</a>
+                <a href="#projects">المشاريع</a>
+                <a href="#skills">المهارات</a>
+                <a href="#services">الخدمات</a>
+                <a href="#contact">اتصل بي</a>
+            </div>
+            
+            <a href="#contact" class="nav-contact">تعاون معي</a>
+        </div>
+    </nav>
+    
+    <!-- قسم البطل -->
+    <section id="home" class="hero">
+        <div class="hero-bg-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        
+        <div class="container hero-content">
+            <div class="hero-text animate__animated animate__fadeInLeft">
+                <h1>مطور برمجيات متكامل الحلول</h1>
+                <div class="typewriter" id="typewriter"></div>
+                <p class="subtitle">أحول الأفكار إلى واقع رقمي باستخدام أحدث التقنيات وأفضل الممارسات في تطوير البرمجيات عبر جميع المنصات.</p>
+                
+                <div class="tech-stack">
+                    <div class="tech-item"><i class="fab fa-python"></i> Python</div>
+                    <div class="tech-item"><i class="fab fa-js"></i> JavaScript</div>
+                    <div class="tech-item"><i class="fab fa-php"></i> PHP</div>
+                    <div class="tech-item"><i class="fab fa-react"></i> React</div>
+                    <div class="tech-item"><i class="fab fa-flutter"></i> Flutter</div>
+                    <div class="tech-item"><i class="fas fa-database"></i> SQL</div>
+                    <div class="tech-item"><i class="fab fa-microsoft"></i> C#</div>
+                </div>
+                
+                <div class="hero-btns">
+                    <a href="#projects" class="btn-primary">
+                        <i class="fas fa-eye"></i> عرض مشاريعي
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                        <i class="fas fa-paper-plane"></i> تواصل معي
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual animate__animated animate__fadeInRight">
+                <div class="code-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-title">
+                            <i class="fas fa-code"></i>
+                            <span>terminal.dev</span>
+                        </div>
+                        <div class="terminal-dots">
+                            <div class="terminal-dot" style="background-color: #f56565;"></div>
+                            <div class="terminal-dot" style="background-color: #ecc94b;"></div>
+                            <div class="terminal-dot" style="background-color: #48bb78;"></div>
+                        </div>
+                    </div>
+                    <div class="terminal-content" id="terminalContent">
+                        <!-- سيتم إضافة المحتوى ديناميكيًا -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>قم بالتمرير للأسفل</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- قسم الإحصائيات -->
+    <section class="stats-section">
+        <div class="container stats-container">
+            <div class="stat-card animate__animated" data-animate="fadeInUp">
+                <div class="stat-number" data-count="30">0</div>
+                <div class="stat-label">مشروع مكتمل</div>
+            </div>
+            <div class="stat-card animate__animated" data-animate="fadeInUp">
+                <div class="stat-number" data-count="18">0</div>
+                <div class="stat-label">عميل راضي</div>
+            </div>
+            <div class="stat-card animate__animated" data-animate="fadeInUp">
+                <div class="stat-number" data-count="3">0</div>
+                <div class="stat-label">سنوات خبرة</div>
+            </div>
+            <div class="stat-card animate__animated" data-animate="fadeInUp">
+                <div class="stat-number" data-count="15">0</div>
+                <div class="stat-label">تقنية متقنة</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم المشاريع -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="section-header animate__animated animate__fadeInDown">
+                <h2 class="section-title">أبرز المشاريع</h2>
+                <p class="section-subtitle">أعمالي التي أعتز بها والتي تعكس خبرتي وتخصصي في مجالات متعددة من تطوير البرمجيات</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card animate__animated" data-animate="fadeInUp">
+                    <div class="project-header" style="background: linear-gradient(135deg, #9b4993, #512bd4);">
+                        <i class="fas fa-calculator project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">نظام محاسبي متكامل</h3>
+                        <p class="project-desc">نظام محاسبي متقدم لتسجيل المعاملات المالية، إدارة الفواتير،وإدارة المخزون، الميزانيات العمومية، قوائم الدخل، والتقارير الماليةوالتقارير الإحصائية مع دعم متعدد العملات والمستخدمين   مع واجهة مستخدم متقدمة وتجربة مستخدم محسنة.</p>
+                        <div class="project-tech">
+                            <span class="csharp"><i class="fab fa-microsoft"></i> C#</span>
+                            <span class="dotnet"><i class="fab fa-windows"></i> .NET Core</span>
+                            <span class="sqlserver"><i class="fas fa-database"></i> SQL Server</span>
+                            <span class="wpf"><i class="fas fa-desktop"></i> WPF</span>
+                            <span><i class="fas fa-layer-group"></i> Entity Framework</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> الكود المصدري</a>
+                            <a href="#" class="project-link"><i class="fas fa-download"></i> تحميل النسخة التجريبية</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card animate__animated" data-animate="fadeInUp">
+                    <div class="project-header" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6);">
+                        <i class="fas fa-shopping-cart project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">منصة تجارة إلكترونية</h3>
+                        <p class="project-desc"> أدرت قاعدة بيانات المنتجات، المستخدمين، وسجلات الطلبات
+                            باستخدام MySQL، مع تطبيق معايير الأمان الأساسية.</p>
+                        <div class="project-tech">
+                            <span><i class="fab fa-php"></i> PHP</span>
+                            <span><i class="fab fa-python"></i> Django</span>
+                            <span><i class="fab fa-react"></i> React</span>
+                            <span class="sqlserver"><i class="fas fa-database"></i> MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> الكود المصدري</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> عرض حي</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card animate__animated" data-animate="fadeInUp">
+                    <div class="project-header" style="background: linear-gradient(135deg, #10b981, #3b82f6);">
+                        <i class="fas fa-mobile-alt project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">تطبيق إدارة المهام الذكي</h3>
+                        <p class="project-desc">تطبيق موبايل متقدم لإدارة المهام الشخصية والفريقية مع مزامنة فورية، إشعارات ذكية، إحصائيات أداء، وتكامل مع أدوات الإنتاجية الشهيرة.</p>
+                        <div class="project-tech">
+                            <span><i class="fab fa-flutter"></i> Flutter</span>
+                            <span><i class="fas fa-fire"></i> Firebase</span>
+                            <span><i class="fas fa-code"></i> Dart</span>
+                            <span><i class="fas fa-cloud"></i> Cloud Functions</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> الكود المصدري</a>
+                            <a href="#" class="project-link"><i class="fab fa-google-play"></i> متجر Play</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card animate__animated" data-animate="fadeInUp">
+                    <div class="project-header" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">
+                        <i class="fas fa-chart-line project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">منصة تحليلات البيانات</h3>
+                        <p class="project-desc">منصة متقدمة لتحليل البيانات الضخمة وتقديم رؤى باستخدام خوارزميات الذكاء الاصطناعي وتصورات بيانات تفاعلية مع إمكانية تصدير التقارير.</p>
+                        <div class="project-tech">
+                            <span><i class="fab fa-python"></i> Python</span>
+                            <span><i class="fas fa-chart-bar"></i> Pandas</span>
+                            <span><i class="fas fa-brain"></i> TensorFlow</span>
+                            <span><i class="fas fa-tachometer-alt"></i> Dash</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> الكود المصدري</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> عرض حي</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card animate__animated" data-animate="fadeInUp">
+                    <div class="project-header" style="background: linear-gradient(135deg, #3b82f6, #10b981);">
+                        <i class="fas fa-shield-alt project-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">أداة أمنية لاكتشاف برامج الهندسة الاجتماعية</h3>
+                        <p class="project-desc">أداة أمنية مخصصة باستخدام Python تهدف إلى اكتشاف برامج الهندسة الاجتماعية 
+                        عبر تحليل اتصالات الشبكة التي يقوم بها والنشاطات. دمجت وظيفة فحص المنافذ (Port Scanning) 
+                        باستخدام مكتبات Python (مثل sockets) و أداة Nmap (عبر واجهة برمجية)، لتحديد نقاط الضعف 
+                        والمنافذ المفتوحة في الشبكة المستهدفة. وفرت واجهة رسومية لإجراء الفحص وتقديم تقارير 
+                        نتائج الأمان بشكل واضح.</p>
+                        <div class="project-tech">
+                            <span class="python"><i class="fab fa-python"></i> Python</span>
+                            <span><i class="fas fa-plug"></i> Socket</span>
+                            <span><i class="fas fa-satellite-dish"></i> Nmap</span>
+                            <span class="security"><i class="fas fa-shield-alt"></i> Security</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> الكود المصدري</a>
+                            <a href="#" class="project-link"><i class="fas fa-download"></i> تحميل الأداة</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم المهارات -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="section-header animate__animated animate__fadeInDown">
+                <h2 class="section-title">خبراتي التقنية</h2>
+                <p class="section-subtitle">مجموعة المهارات التقنية التي أتقنها والتي تمكنني من تقديم حلول برمجية مبتكرة وفعالة</p>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skill-category animate__animated" data-animate="fadeInLeft">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3 class="skill-title">تطوير Backend</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-python"></i>
+                                <span>Python & Django</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="90"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-php"></i>
+                                <span>PHP & Laravel</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="85"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-microsoft"></i>
+                                <span>C# & .NET Core</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="80"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-database"></i>
+                                <span>قواعد البيانات</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="95"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>أمن المعلومات</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="75"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category animate__animated" data-animate="fadeInUp">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <h3 class="skill-title">تطوير Frontend</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript & React</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="88"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-vuejs"></i>
+                                <span>Vue.js</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="70"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5 & CSS3</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="95"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-microsoft"></i>
+                                <span>WPF & WinForms</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="75"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category animate__animated" data-animate="fadeInRight">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="skill-title">تطبيقات الموبايل</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-flutter"></i>
+                                <span>Flutter</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="80"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fab fa-android"></i>
+                                <span>Android Native</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="60"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-fire"></i>
+                                <span>Firebase</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="85"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="skill-name">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>API Integration</span>
+                            </div>
+                            <div class="skill-level-bar">
+                                <div class="skill-level-fill" data-level="90"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم الخدمات -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header animate__animated animate__fadeInDown">
+                <h2 class="section-title">الخدمات التي أقدمها</h2>
+                <p class="section-subtitle">حلول برمجية متكاملة تلبي احتياجات عملك وتحول أفكارك إلى واقع رقمي ملموس</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card animate__animated" data-animate="fadeInUp">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="service-title">تطوير تطبيقات الويب</h3>
+                    <p class="service-desc">تصميم وتطوير تطبيقات ويب متكاملة وذكية باستخدام أحدث التقنيات مع واجهات مستخدم جذابة وسهلة الاستخدام.</p>
+                </div>
+                
+                <div class="service-card animate__animated" data-animate="fadeInUp">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="service-title">تطوير تطبيقات الموبايل</h3>
+                    <p class="service-desc">بناء تطبيقات موبايل عالية الجودة لنظامي Android و iOS باستخدام تقنيات متطورة تضمن الأداء العالي والتجربة المثالية.</p>
+                </div>
+                
+                <div class="service-card animate__animated" data-animate="fadeInUp">
+                    <div class="service-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="service-title">أنظمة المحاسبة والمالية</h3>
+                    <p class="service-desc">تطوير أنظمة محاسبية وإدارية مالية متكاملة مع دعم التقارير المالية والميزانيات وقوائم الدخل.</p>
+                </div>
+
+                <div class="service-card animate__animated" data-animate="fadeInUp">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="service-title">تطوير قواعد البيانات</h3>
+                    <p class="service-desc">تصميم وإدارة قواعد بيانات متطورة وآمنة مع تحسين الأداء وضمان سلامة البيانات وسهولة الوصول إليها.</p>
+                </div>
+
+                <div class="service-card animate__animated" data-animate="fadeInUp">
+                    <div class="service-icon">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h3 class="service-title">تطوير تطبيقات سطح المكتب</h3>
+                    <p class="service-desc"> تطوير تطبيقات سطح المكتب تفاعلية باستخدام C# وPython (Tkinter & PyQt)، أدّت إلى أتمتة مهام
+                        إدخال البيانات بنسبة 70% وتقليل الوقت المستغرق بنسبة 50%</p>
+                </div>
+
+                <div class="service-card animate__animated" data-animate="fadeInUp">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="service-title">تطوير أدوات الأمن السيبراني</h3>
+                    <p class="service-desc">بناء أدوات وأسكربتات أمنية لاكتشاف الثغرات الأمنية وفحص الشبكات والأنظمة باستخدام Python وتقنيات الأمان المتقدمة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم الاتصال -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header animate__animated animate__fadeInDown">
+                <h2 class="section-title">لنتواصل</h2>
+                <p class="section-subtitle">هل لديك مشروع أو فكرة تريد تنفيذها؟ أنا هنا لمساعدتك في تحويل أفكارك إلى واقع رقمي متميز</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info animate__animated" data-animate="fadeInLeft">
+                    <h3>لنعمل معاً</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px;">
+                        سواء كنت تبحث عن مطور للانضمام إلى فريقك، تحتاج إلى تطوير مشروع برمجي، أو تريد استشارة تقنية، فأنا هنا لمساعدتك في تحقيق أهدافك الرقمية.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4 style="margin-bottom: 5px;">البريد الإلكتروني</h4>
+                                <p style="color: var(--text-secondary);">ahmedaljeneini@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4 style="margin-bottom: 5px;">الهاتف</h4>
+                                <p style="color: var(--text-secondary);direction: ltr; 
+                                /* 💡 محاذاة النص داخل العنصر لليمين إذا كان داخل نص عربي */
+                                text-align: right;"> +967 775 197 514</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4 style="margin-bottom: 5px;">الموقع</h4>
+                                <p style="color: var(--text-secondary);"> اليمن / صنعاء </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form animate__animated" data-animate="fadeInRight">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="الاسم الكامل" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="subject" placeholder="موضوع الرسالة">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" rows="6" placeholder="محتوى الرسالة" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-info" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 15px;">
+                                <i class="fas fa-info-circle"></i> سيتم حفظ رسالتك وإرسال إشعار إليّ فوراً
+                            </div>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> إرسال الرسالة
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- التذييل -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-code">&lt;/&gt;</span>
+                        <span>أحمد الجنيني</span>
+                    </div>
+                    <p class="footer-desc">مطور برمجيات متخصص في بناء حلول رقمية مبتكرة وعملية تلبي احتياجات العصر الرقمي وتساهم في تحقيق الأهداف التجارية.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-codepen"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-left"></i> المشاريع</a></li>
+                        <li><a href="#skills"><i class="fas fa-chevron-left"></i> المهارات</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-left"></i> الخدمات</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-left"></i> اتصل بي</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>معلومات التواصل</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:ahmedaljeneini@gmail.com"><i class="fas fa-envelope"></i> البريد الإلكتروني</a></li>
+                        <li><a href="tel:+967775197514"><i class="fas fa-phone"></i> الهاتف</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 أحمد الجنيني. جميع الحقوق محفوظة. | تم التصميم والتطوير بكل حب</p>
+            </div>
+        </div>
+    </footer>
+<!-- مكتبة EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    // نظام إرسال واستقبال الرسائل
+    let messages = JSON.parse(localStorage.getItem('messages')) || [];
+    
+    // تأثير كتابة النص
+    const typewriterText = "مطور ويب • مصمم تطبيقات • محلل بيانات • مطور حلول متكاملة";
+    let typewriterIndex = 0;
+    const typewriterElement = document.getElementById('typewriter');
+    
+    function typeWriter() {
+        if (typewriterIndex < typewriterText.length) {
+            typewriterElement.innerHTML += typewriterText.charAt(typewriterIndex);
+            typewriterIndex++;
+            setTimeout(typeWriter, 100);
+        } else {
+            setTimeout(() => {
+                typewriterElement.innerHTML = '';
+                typewriterIndex = 0;
+                setTimeout(typeWriter, 500);
+            }, 2000);
+        }
+    }
+    
+    // كود C# للمحاكاة في الطرفية
+    const csharpCode = `
+dev@terminal:~$ dotnet run AccountingSystem.cs
+
+// ملف: AccountingSystem.cs - نظام محاسبي بلغة C#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace AccountingSystem
+{
+public class Transaction
+{
+    public int Id { get; set; }
+    public string Description { get; set; }
+    public decimal Amount { get; set; }
+    public DateTime Date { get; set; }
+    public string Type { get; set; }
+}
+
+public class AccountingManager
+{
+    private List<Transaction> transactions = new List<Transaction>();
+
+    public void AddTransaction(string description, decimal amount, string type)
+    {
+        var transaction = new Transaction
+        {
+            Id = transactions.Count + 1,
+            Description = description,
+            Amount = amount,
+            Date = DateTime.Now,
+            Type = type
+        };
+
+        transactions.Add(transaction);
+        Console.WriteLine($"✅ تمت إضافة معاملة: {description} بقيمة {amount:C}");
+    }
+
+    public decimal CalculateBalance()
+    {
+        decimal balance = 0;
+        foreach (var transaction in transactions)
+        {
+            if (transaction.Type == "دخل")
+                balance += transaction.Amount;
+            else if (transaction.Type == "مصروف")
+                balance -= transaction.Amount;
+        }
+        return balance;
+    }
+
+    public void GenerateFinancialReport()
+    {
+        Console.WriteLine("\\n📊 التقرير المالي:");
+        Console.WriteLine($"🔢 عدد المعاملات: {transactions.Count}");
+        Console.WriteLine($"💰 الرصيد الحالي: {CalculateBalance():C}");
+
+        var income = transactions.Where(t => t.Type == "دخل").Sum(t => t.Amount);
+        var expenses = transactions.Where(t => t.Type == "مصروف").Sum(t => t.Amount);
+
+        Console.WriteLine($"📈 إجمالي الدخل: {income:C}");
+        Console.WriteLine($"📉 إجمالي المصروفات: {expenses:C}");
+        Console.WriteLine($"📊 صافي الربح: {(income - expenses):C}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("🏦 نظام المحاسبة المتكامل\\n");
+
+        var accounting = new AccountingManager();
+
+        // إضافة معاملات تجريبية
+        accounting.AddTransaction("بيع منتجات", 15000, "دخل");
+        accounting.AddTransaction("رواتب الموظفين", 8000, "مصروف");
+        accounting.AddTransaction("خدمات إعلانية", 3000, "مصروف");
+        accounting.AddTransaction("إيرادات استشارات", 5000, "دخل");
+
+        // توليد التقرير
+        accounting.GenerateFinancialReport();
+
+        Console.WriteLine("\\n✅ النظام يعمل بنجاح!");
+        Console.WriteLine("🚀 جاهز لمشاريع C# القادمة!");
+    }
+}
+}
+
+dev@terminal:~$ 
+`;
+    
+    // تطبيق ألوان الكود
+    function highlightCode(code) {
+        return code
+            .replace(/\/\/.*$/gm, '<span class="code-comment">$&</span>')
+            .replace(/"(?:[^"\\]|\\.)*"/g, '<span class="code-string">$&</span>')
+            .replace(/\b(using|namespace|class|public|private|static|void|int|string|decimal|DateTime|var|if|else|foreach|return|new)\b/g, '<span class="code-keyword">$1</span>')
+            .replace(/\b(Console|List|Transaction|AccountingManager|Program)\b/g, '<span class="code-class">$1</span>')
+            .replace(/\b(AddTransaction|CalculateBalance|GenerateFinancialReport|Main|WriteLine|Where|Sum)\b/g, '<span class="code-function">$1</span>')
+            .replace(/\b(Id|Description|Amount|Date|Type|transactions|balance|income|expenses)\b/g, '<span class="code-variable">$1</span>')
+            .replace(/\b\d+\b/g, '<span class="code-number">$&</span>')
+            .replace(/\./g, '<span class="code-operator">.</span>')
+            .replace(/\$"([^"]*)"/g, '<span class="code-string">$&</span>')
+            .replace(/dev@terminal/g, '<span class="code-prompt">dev@terminal</span>')
+            .replace(/~/g, '<span class="code-path">~</span>')
+            .replace(/\n/g, '<br>')
+            .replace(/ /g, '&nbsp;');
+    }
+    
+    // عرض الكود في الطرفية
+    function displayCodeInTerminal() {
+        const terminalContent = document.getElementById('terminalContent');
+        const highlightedCode = highlightCode(csharpCode);
+        
+        let currentChar = 0;
+        const totalChars = highlightedCode.length;
+        
+        function typeCodeChar() {
+            if (currentChar < totalChars) {
+                const char = highlightedCode.charAt(currentChar);
+                
+                // معالجة خاصة للتباعدات
+                if (char === '&') {
+                    // التخطي إلى نهاية الـ HTML entity
+                    const endIndex = highlightedCode.indexOf(';', currentChar);
+                    if (endIndex !== -1) {
+                        terminalContent.innerHTML += highlightedCode.substring(currentChar, endIndex + 1);
+                        currentChar = endIndex + 1;
+                    } else {
+                        terminalContent.innerHTML += char;
+                        currentChar++;
+                    }
+                } else if (char === '<') {
+                    // التخطي إلى نهاية الوسم
+                    const endIndex = highlightedCode.indexOf('>', currentChar);
+                    if (endIndex !== -1) {
+                        terminalContent.innerHTML += highlightedCode.substring(currentChar, endIndex + 1);
+                        currentChar = endIndex + 1;
+                    } else {
+                        terminalContent.innerHTML += char;
+                        currentChar++;
+                    }
+                } else {
+                    terminalContent.innerHTML += char;
+                    currentChar++;
+                }
+                
+                // التمرير للأسفل
+                terminalContent.scrollTop = terminalContent.scrollHeight;
+                
+                // السرعة متفاوتة حسب المحتوى
+                let speed = 10;
+                if (char === '\n' || char === '<') speed = 50;
+                if (char === ' ') speed = 5;
+                
+                setTimeout(typeCodeChar, speed);
+            } else {
+                // إضافة المؤشر الوامض في النهاية
+                terminalContent.innerHTML += '<span class="cursor"></span>';
+            }
+        }
+        
+        // بدء الكتابة بعد تأخير قصير
+        setTimeout(typeCodeChar, 500);
+    }
+    
+    // عداد الإحصائيات
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-count');
+            const increment = target / 100;
+            let current = 0;
+            
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    counter.textContent = Math.ceil(current);
+                    setTimeout(updateCounter, 20);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+            
+            updateCounter();
+        });
+    }
+    
+    // شريط المهارات المتحرك
+    function animateSkillBars() {
+        const skillBars = document.querySelectorAll('.skill-level-fill');
+        skillBars.forEach(bar => {
+            const level = bar.getAttribute('data-level');
+            bar.style.width = level + '%';
+        });
+    }
+    
+    // تأثيرات التمرير
+    function handleScrollAnimations() {
+        const elements = document.querySelectorAll('[data-animate]');
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                const animation = element.getAttribute('data-animate');
+                element.classList.add('animate__animated', `animate__${animation}`);
+            }
+        });
+    }
+    
+    // شريط التنقل المتغير
+    function handleNavbarScroll() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+    
+    // قائمة الجوال
+    function setupMobileMenu() {
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            mobileMenuBtn.innerHTML = navLinks.style.display === 'flex' ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        if (window.innerWidth <= 768) {
+            navLinks.style.display = 'none';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.backgroundColor = 'rgba(15, 23, 42, 0.98)';
+            navLinks.style.padding = '20px';
+            navLinks.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+        }
+    }
+    
+    // التنقل السلس
+    function setupSmoothScrolling() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+    }
+    
+    // إظهار الإشعارات
+    function showNotification(message, type = 'info') {
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+            </div>
+            <button class="notification-close"><i class="fas fa-times"></i></button>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 10);
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 5000);
+        
+        notification.querySelector('.notification-close').addEventListener('click', () => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        });
+    }
+    
+    // تحديث عدد الرسائل غير المقروءة
+    function updateUnreadCount() {
+        const unreadCount = messages.filter(msg => !msg.read).length;
+        const messageIndicator = document.getElementById('messageIndicator');
+        const messageCount = document.getElementById('messageCount');
+        
+        if (unreadCount > 0) {
+            messageIndicator.style.display = 'flex';
+            messageCount.textContent = unreadCount;
+        } else {
+            messageIndicator.style.display = 'none';
+        }
+    }
+    
+    // لوحة عرض الرسائل
+    function showMessagesPanel() {
+        const existingPanel = document.querySelector('.messages-panel');
+        if (existingPanel) {
+            existingPanel.classList.remove('show');
+            setTimeout(() => {
+                existingPanel.remove();
+            }, 300);
+            return;
+        }
+        
+        const panel = document.createElement('div');
+        panel.className = 'messages-panel';
+        
+        const sortedMessages = [...messages].sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        panel.innerHTML = `
+            <div class="messages-header">
+                <h3>الرسائل الواردة (${messages.length})</h3>
+                <button class="close-panel"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="messages-list">
+                ${sortedMessages.length > 0 ? 
+                    sortedMessages.map((msg, index) => `
+                        <div class="message-item ${!msg.read ? 'unread' : ''}" data-id="${msg.id}">
+                            <div class="message-header">
+                                <div class="message-sender">
+                                    <strong>${msg.name}</strong>
+                                    <small>${msg.email}</small>
+                                </div>
+                                <div class="message-date">
+                                    ${new Date(msg.date).toLocaleDateString('ar-SA')}
+                                </div>
+                            </div>
+                            <div class="message-subject">${msg.subject || 'بدون موضوع'}</div>
+                            <div class="message-preview">${msg.message.substring(0, 100)}${msg.message.length > 100 ? '...' : ''}</div>
+                            <div class="message-actions">
+                                <button class="mark-read" data-id="${msg.id}">
+                                    <i class="fas fa-${msg.read ? 'envelope-open' : 'envelope'}"></i>
+                                    ${msg.read ? 'غير مقروءة' : 'تم القراءة'}
+                                </button>
+                                <button class="reply-btn" data-email="${msg.email}">
+                                    <i class="fas fa-reply"></i> رد
+                                </button>
+                                <button class="delete-btn" data-id="${msg.id}">
+                                    <i class="fas fa-trash"></i> حذف
+                                </button>
+                            </div>
+                        </div>
+                    `).join('') : 
+                    '<div class="empty-messages">لا توجد رسائل</div>'
+                }
+            </div>
+        `;
+        
+        document.body.appendChild(panel);
+        
+        setTimeout(() => {
+            panel.classList.add('show');
+        }, 10);
+        
+        panel.querySelector('.close-panel').addEventListener('click', () => {
+            panel.classList.remove('show');
+            setTimeout(() => {
+                panel.remove();
+            }, 300);
+        });
+        
+        panel.querySelectorAll('.mark-read').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = parseInt(this.getAttribute('data-id'));
+                const message = messages.find(m => m.id === id);
+                if (message) {
+                    message.read = !message.read;
+                    localStorage.setItem('messages', JSON.stringify(messages));
+                    updateUnreadCount();
+                    showMessagesPanel();
+                }
+            });
+        });
+        
+        panel.querySelectorAll('.delete-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = parseInt(this.getAttribute('data-id'));
+                messages = messages.filter(m => m.id !== id);
+                localStorage.setItem('messages', JSON.stringify(messages));
+                updateUnreadCount();
+                showMessagesPanel();
+            });
+        });
+        
+        panel.querySelectorAll('.reply-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const email = this.getAttribute('data-email');
+                const contactSection = document.getElementById('contact');
+                const form = document.getElementById('contactForm');
+                
+                window.scrollTo({
+                    top: contactSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                const emailField = form.querySelector('input[name="email"]');
+                if (emailField) {
+                    emailField.value = email;
+                    emailField.focus();
+                }
+                
+                panel.classList.remove('show');
+                setTimeout(() => {
+                    panel.remove();
+                }, 300);
+            });
+        });
+    }
+    
+    // إعداد نموذج الاتصال المحسن
+    function setupContactForm() {
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // جمع البيانات من النموذج
+                const formData = new FormData(this);
+                const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    subject: formData.get('subject') || 'رسالة جديدة من الموقع',
+                    message: formData.get('message'),
+                    date: new Date().toISOString(),
+                    read: false,
+                    id: Date.now()
+                };
+                
+                // التحقق من البيانات
+                if (!data.name || !data.email || !data.message) {
+                    showNotification('يرجى ملء جميع الحقول المطلوبة', 'error');
+                    return;
+                }
+                
+                if (!validateEmail(data.email)) {
+                    showNotification('يرجى إدخال بريد إلكتروني صحيح', 'error');
+                    return;
+                }
+                
+                // إظهار مؤشر التحميل
+                const submitBtn = this.querySelector('.submit-btn');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+                submitBtn.disabled = true;
+                let ee=data.email;
+                try {
+                    // إرسال الرسالة
+                    const result = await sendEmail(data,ee);
+                    
+                    if (result.success) {
+                        if (result.emailSent) {
+                            showNotification('✅ تم إرسال رسالتك بنجاح! سأتواصل معك قريباً.', 'success');
+                        } else {
+                            showNotification('⚠️ تم حفظ رسالتك محلياً وسأطلع عليها قريباً', 'info');
+                        }
+                        
+                        this.reset();
+                        updateUnreadCount();
+                    } else {
+                        showNotification('حدث خطأ أثناء إرسال رسالتك', 'error');
+                    }
+                } catch (error) {
+                    console.error('خطأ في إرسال الرسالة:', error);
+                    showNotification('حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.', 'error');
+                } finally {
+                    // إعادة زر الإرسال إلى حالته الأصلية
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+    }
+    
+    // التحقق من صحة البريد الإلكتروني
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+    
+    // ============== إعداد EmailJS ==============
+    (function() {
+        try {
+            emailjs.init("Yu5DL84H0uQavAVPg");
+            console.log("✅ EmailJS جاهز لإرسال الرسائل");
+        } catch (error) {
+            console.error("❌ خطأ في تهيئة EmailJS:", error);
+        }
+    })();
+
+    // ============== إرسال البريد للزائر (تأكيد) ==============
+    async function sendConfirmationToVisitor(messageData,nn) {
+        try {
+            const confirmationParams = {
+                toe: nn, // بريد الزائر
+                name: messageData.name,
+                to_email: nn,
+                title: messageData.subject,
+                message: `عزيزي/عزيزتي ${nn},\n\nشكراً لتواصلك معي. لقد تلقيت رسالتك وسأقوم بالرد عليك في أقرب وقت ممكن.\n\nرسالتك: "${messageData.message.substring(0, 100)}..."\n\nمع خالص التقدير،\nأحمد الجنيني\nمطور برمجيات`,
+                date: new Date().toLocaleString('ar-SA')
+            };
+            
+            await emailjs.send(
+                "service_0hnqzcf",
+                "template_slno7vr",
+                confirmationParams
+            );
+            
+            console.log("✅ تم إرسال تأكيد للزائر");
+          
+            return true;
+        } catch (error) {
+            console.error("❌ فشل إرسال تأكيد للزائر:", error);
+            return false;
+        }
+    }
+
+    // ============== إرسال البريد للمالك ==============
+    async function sendToOwner(messageData,nn) {
+        try {
+            const ownerParams = {
+                to_email:  nn, // بريدك أنت
+                name: messageData.name,
+                to_email: nn, // بريد الزائر
+                subject: messageData.subject || "رسالة جديدة من موقع أحمد الجنيني",
+                message: messageData.message,
+                date: new Date().toLocaleString('ar-SA'),
+                phone: "لم يذكر",
+                ip_address: "غير معروف"
+            };
+            
+            await emailjs.send(
+                "service_0hnqzcf",
+                "template_pteseuk",
+                ownerParams
+            );
+            
+            console.log("✅ تم إرسال الرسالة للمالك بنجاح!");
+            return { success: true, method: "primary" };
+            
+        } catch (error) {
+            console.error("❌ فشل إرسال الرسالة للمالك:", error);
+            return { success: false, error: error };
+        }
+    }
+
+    // ============== دالة الإرسال الرئيسية ==============
+    async function sendEmail(messageData,messageData2) {
+        return new Promise(async (resolve) => {
+            try {
+                // 1. إعداد بيانات الرسالة
+                const fullMessageData = {
+                    id: Date.now(),
+                    name: messageData.name,
+                    to_email:messageData2,
+                    title: messageData.subject || 'بدون موضوع',
+                    message: messageData.message,
+                    date: new Date().toISOString(),
+                    read: false,
+                    emailSentToOwner: true,
+                    emailSentToVisitor: true,
+                    emailSentAt: messageData.email
+                };
+                
+                // 2. إرسال الرسالة للمالك (أنت)
+                const ownerResult = await sendToOwner(fullMessageData,fullMessageData.to_email);
+                fullMessageData.emailSentToOwner = ownerResult;
+                
+                // 3. إرسال تأكيد للزائر
+                const visitorResult = await sendConfirmationToVisitor(fullMessageData,fullMessageData.to_email);
+                fullMessageData.emailSentToVisitor = visitorResult;
+                
+                // 4. تحديث حالة الإرسال
+                fullMessageData.emailSentAt = new Date().toISOString();
+                
+                // 5. حفظ الرسالة محلياً
+                messages.push(fullMessageData);
+                localStorage.setItem('messages', JSON.stringify(messages));
+                
+                // 6. تحديث الواجهة
+                updateUnreadCount();
+                
+                // 7. إظهار الإشعار المناسب
+                if (ownerResult.success && visitorResult) {
+                    console.log(`🔔 رسالة جديدة من ${fullMessageData.name} - تم الإرسال بنجاح للمالك والزائر`);
+                    resolve({
+                        success: true,
+                        emailSent: true,
+                        message: "تم إرسال رسالتك بنجاح!",
+                        data: fullMessageData
+                    });
+                } else if (ownerResult.success) {
+                    console.log(`🔔 رسالة جديدة من ${fullMessageData.name} - تم الإرسال للمالك فقط`);
+                    resolve({
+                        success: true,
+                        emailSent: true,
+                        message: "تم إرسال رسالتك! لم نتمكن من إرسال تأكيد لبريدك.",
+                        data: fullMessageData
+                    });
+                } else {
+                    console.log(`🔔 رسالة جديدة من ${fullMessageData.name} - تم الحفظ محلياً فقط`);
+                    resolve({
+                        success: true,
+                        emailSent: false,
+                        message: "تم حفظ رسالتك محلياً، سنطلع عليها قريباً.",
+                        data: fullMessageData
+                    });
+                }
+                
+            } catch (error) {
+                console.error("❌ خطأ في عملية الإرسال:", error);
+                resolve({
+                    success: false,
+                    message: "حدث خطأ غير متوقع"
+                });
+            }
+        });
+    }
+    
+    // جسيمات الخلفية
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles-js');
+        if (!particlesContainer) return;
+        
+        const particleCount = 50;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = Math.random() * 5 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.background = `rgba(${Math.floor(Math.random() * 100 + 155)}, ${Math.floor(Math.random() * 100 + 155)}, 255, ${Math.random() * 0.5 + 0.1})`;
+            particle.style.borderRadius = '50%';
+            particle.style.top = Math.random() * 100 + 'vh';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.boxShadow = '0 0 10px rgba(59, 130, 246, 0.5)';
+            
+            const duration = Math.random() * 20 + 10;
+            particle.style.animation = `float ${duration}s ease-in-out infinite`;
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            
+            particlesContainer.appendChild(particle);
+        }
+    }
+    
+    // تهيئة كل شيء عند تحميل الصفحة
+    document.addEventListener('DOMContentLoaded', function() {
+        // بدء تأثيرات الكتابة
+        typeWriter();
+        displayCodeInTerminal();
+        
+        // إعداد قائمة الجوال
+        setupMobileMenu();
+        
+        // إعداد التنقل السلس
+        setupSmoothScrolling();
+        
+        // إعداد نموذج الاتصال
+        setupContactForm();
+        
+        // إعداد مؤشر الرسائل
+        updateUnreadCount();
+        
+        // إضافة حدث لمؤشر الرسائل
+        document.getElementById('messageIndicator').addEventListener('click', showMessagesPanel);
+        
+        // أحداث التمرير
+        window.addEventListener('scroll', () => {
+            handleNavbarScroll();
+            handleScrollAnimations();
+        });
+        
+        // تشغيل الرسوم المتحركة للمرة الأولى
+        handleScrollAnimations();
+        
+        // إنشاء الجسيمات
+        createParticles();
+        
+        // تشغيل العداد عند التمرير للقسم
+        let countersAnimated = false;
+        let skillsAnimated = false;
+        
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersAnimated) {
+                    animateCounters();
+                    countersAnimated = true;
+                }
+            });
+        }, observerOptions);
+        
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !skillsAnimated) {
+                    animateSkillBars();
+                    skillsAnimated = true;
+                }
+            });
+        }, observerOptions);
+        
+        const statsSection = document.querySelector('.stats-section');
+        const skillsSection = document.querySelector('.skills-section');
+        
+        if (statsSection) statsObserver.observe(statsSection);
+        if (skillsSection) skillsObserver.observe(skillsSection);
+    });
+</script>
+</body>
+</html>
