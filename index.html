@@ -2466,7 +2466,7 @@ dev@terminal:~$
                 name: messageData.name,
                 to_email: nn,
                 title: messageData.subject,
-                message: `عزيزي/عزيزتي ${nn},\n\nشكراً لتواصلك معي. لقد تلقيت رسالتك وسأقوم بالرد عليك في أقرب وقت ممكن.\n\nرسالتك: "${ messageData.message.substring(0, 100)  }..."\n\nمع خالص التقدير،\nأحمد الجنيني\nمطور برمجيات`,
+                message: `عزيزي/عزيزتي ${nn},\n\nشكراً لتواصلك معي. لقد تلقيت رسالتك وسأقوم بالرد عليك في أقرب وقت ممكن.\n\nرسالتك: "\n\n     ${    messageData.message.substring(0, 100)    }  \n\n   "\n\nمع خالص التقدير،\nأحمد الجنيني\nمطور برمجيات`,
                 date: new Date().toLocaleString('ar-SA')
             };
             
@@ -2499,11 +2499,11 @@ dev@terminal:~$
                 ip_address: "غير معروف"
             };
             
-            await emailjs.send(
+           /* await emailjs.send(
                 "service_0hnqzcf",
                 "template_pteseuk",
                 ownerParams
-            );
+            );*/
             
             console.log("✅ تم إرسال الرسالة للمالك بنجاح!");
             return { success: true, method: "primary" };
@@ -2533,12 +2533,12 @@ dev@terminal:~$
                 };
                 
                 // 2. إرسال الرسالة للمالك (أنت)
-           //     const ownerResult = await sendToOwner(fullMessageData,fullMessageData.to_email);
-            //    fullMessageData.emailSentToOwner = ownerResult;
+              const ownerResult = await sendToOwner(fullMessageData,fullMessageData.to_email);
+            //   fullMessageData.emailSentToOwner = ownerResult;
                 
                 // 3. إرسال تأكيد للزائر
                 const visitorResult = await sendConfirmationToVisitor(fullMessageData,fullMessageData.to_email);
-                fullMessageData.emailSentToVisitor = visitorResult;
+                fullMessageData.emailSentToVisitor = visitorResult.success;
                 
                 // 4. تحديث حالة الإرسال
                 fullMessageData.emailSentAt = new Date().toISOString();
