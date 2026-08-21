@@ -6,6 +6,8 @@
     <title>أحمد الجنيني | مطور برمجيات متكامل الحلول</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- استخدم هذا الرابط بدلاً من الرابط القديم -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --primary: #0f172a;
@@ -169,7 +171,6 @@
             cursor: pointer;
         }
         
-        /* أنماط الرسائل والإشعارات */
         .notification {
             position: fixed;
             top: 100px;
@@ -225,7 +226,6 @@
             background: linear-gradient(135deg, #3b82f6, #2563eb);
         }
         
-        /* مؤشر الرسائل */
         .message-indicator {
             position: absolute;
             right: -10px;
@@ -248,158 +248,6 @@
             transform: scale(1.1);
         }
         
-        /* لوحة الرسائل */
-        .messages-panel {
-            position: fixed;
-            top: 80px;
-            left: 20px;
-            right: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(15, 23, 42, 0.98);
-            backdrop-filter: blur(15px);
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            z-index: 1999;
-            max-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            transform: translateY(-20px);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .messages-panel.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .messages-header {
-            padding: 20px;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .messages-header h3 {
-            margin: 0;
-            color: white;
-        }
-        
-        .close-panel {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 5px;
-        }
-        
-        .close-panel:hover {
-            color: var(--accent);
-        }
-        
-        .messages-list {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-        
-        .message-item {
-            background: rgba(30, 41, 59, 0.7);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(59, 130, 246, 0.1);
-            transition: all 0.3s;
-        }
-        
-        .message-item.unread {
-            border-color: var(--accent);
-            background: rgba(59, 130, 246, 0.1);
-        }
-        
-        .message-item:hover {
-            transform: translateX(5px);
-            border-color: var(--accent);
-        }
-        
-        .message-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
-        
-        .message-sender strong {
-            display: block;
-            color: white;
-            margin-bottom: 5px;
-        }
-        
-        .message-sender small {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        .message-date {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        .message-subject {
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .message-preview {
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-        
-        .message-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .message-actions button {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: var(--accent);
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.3s;
-        }
-        
-        .message-actions button:hover {
-            background: rgba(59, 130, 246, 0.2);
-            transform: translateY(-2px);
-        }
-        
-        .delete-btn {
-            background: rgba(239, 68, 68, 0.1) !important;
-            border-color: rgba(239, 68, 68, 0.3) !important;
-            color: #ef4444 !important;
-        }
-        
-        .empty-messages {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-secondary);
-        }
-        
-        /* قسم البطل */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -619,7 +467,6 @@
             word-break: break-word;
         }
         
-        /* ألوان الكود */
         .code-keyword { color: #ff6b8b; }
         .code-function { color: #61dafb; }
         .code-string { color: #98c379; }
@@ -687,6 +534,104 @@
         .stat-label {
             font-size: 1.2rem;
             color: var(--text-secondary);
+        }
+        
+        .about-section {
+            padding: 120px 0;
+            background-color: rgba(15, 23, 42, 0.5);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            bottom: -10px;
+            right: 0;
+            border-radius: 2px;
+        }
+        
+        .about-text p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-text .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .about-objective {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 40px;
+            border-radius: 20px;
+            border-right: 5px solid var(--accent);
+        }
+        
+        .about-objective h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .about-objective p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .about-image .code-block {
+            background: rgba(15, 23, 42, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            width: 100%;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+        
+        .about-image .code-block .comment {
+            color: #5c6370;
+        }
+        
+        .about-image .code-block .keyword {
+            color: #ff6b8b;
+        }
+        
+        .about-image .code-block .string {
+            color: #98c379;
+        }
+        
+        .about-image .code-block .function {
+            color: #61dafb;
+        }
+        
+        .about-image .code-block .variable {
+            color: #e06c75;
         }
         
         .projects-section {
@@ -1188,9 +1133,36 @@
             font-size: 0.9rem;
         }
         
-        /* تصميم متجاوب */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-secondary);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
+        }
+        
         @media (max-width: 1200px) {
-            .hero-content {
+            .hero-content, .about-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
@@ -1201,6 +1173,12 @@
             
             .contact-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .about-text h2::after {
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
             }
         }
         
@@ -1254,57 +1232,15 @@
                 text-align: center;
             }
             
-            .messages-panel {
-                top: 60px;
-                left: 10px;
-                right: 10px;
-                max-height: 80vh;
-            }
-            
-            .notification {
-                left: 10px;
-                right: 10px;
-                max-width: none;
-                transform: translateX(0) translateY(-20px);
-            }
-            
-            .notification.show {
-                transform: translateX(0) translateY(0);
-            }
-            
             .terminal-content {
                 font-size: 12px;
                 padding: 15px;
                 height: 350px;
             }
-        }
-        
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--text-secondary);
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-10px) translateX(-50%); }
-            60% { transform: translateY(-5px) translateX(-50%); }
+            
+            .about-objective {
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -1319,7 +1255,7 @@
                 <span class="logo-code">&lt;/&gt;</span>
                 <span>أحمد الجنيني</span>
                 <div class="message-indicator" id="messageIndicator" style="display: none;">
-                    <span id="messageCount">0</span>
+                    <!-- <span id="messageCount">0</span>-->
                 </div>
             </div>
             
@@ -1329,13 +1265,14 @@
             
             <div class="nav-links" id="navLinks">
                 <a href="#home" class="active">الرئيسية</a>
+                <a href="#about">نبذة عني</a>
                 <a href="#projects">المشاريع</a>
                 <a href="#skills">المهارات</a>
                 <a href="#services">الخدمات</a>
                 <a href="#contact">اتصل بي</a>
             </div>
             
-            <a href="#contact" class="nav-contact"> لنعمل معاً</a>
+            <a href="#contact" class="nav-contact">لنعمل معاً</a>
         </div>
     </nav>
     
@@ -1348,10 +1285,10 @@
         </div>
         
         <div class="container hero-content">
-            <div class="hero-text animate__animated animate__fadeInLeft">
-                <h1>مطور برمجيات متكامل الحلول</h1>
+            <div class="hero-text">
+                <h1>أحمد عبد الله الجنيني</h1>
                 <div class="typewriter" id="typewriter"></div>
-                <p class="subtitle">أحول الأفكار إلى واقع رقمي باستخدام أحدث التقنيات وأفضل الممارسات في تطوير البرمجيات عبر جميع المنصات.</p>
+                <p class="subtitle">مهندس برمجيات متخصص في بناء الحلول المتكاملة (Web & Mobile) بأحدث التقنيات وأفضل الممارسات في تطوير البرمجيات لرفع الكفاءة التشغيلية.</p>
                 
                 <div class="tech-stack">
                     <div class="tech-item"><i class="fab fa-python"></i> Python</div>
@@ -1360,7 +1297,7 @@
                     <div class="tech-item"><i class="fab fa-react"></i> React</div>
                     <div class="tech-item"><i class="fab fa-flutter"></i> Flutter</div>
                     <div class="tech-item"><i class="fas fa-database"></i> SQL</div>
-                    <div class="tech-item"><i class="fab fa-microsoft" ></i> C#</div>
+                    <div class="tech-item"><i class="fab fa-microsoft"></i> C#</div>
                 </div>
                 
                 <div class="hero-btns">
@@ -1373,7 +1310,7 @@
                 </div>
             </div>
             
-            <div class="hero-visual animate__animated animate__fadeInRight">
+            <div class="hero-visual">
                 <div class="code-terminal">
                     <div class="terminal-header">
                         <div class="terminal-title">
@@ -1402,21 +1339,72 @@
     <!-- قسم الإحصائيات -->
     <section class="stats-section">
         <div class="container stats-container">
-            <div class="stat-card animate__animated" data-animate="fadeInUp">
+            <div class="stat-card">
                 <div class="stat-number" data-count="30">0</div>
                 <div class="stat-label">مشروع مكتمل</div>
             </div>
-            <div class="stat-card animate__animated" data-animate="fadeInUp">
+            <div class="stat-card">
                 <div class="stat-number" data-count="18">0</div>
                 <div class="stat-label">عميل راضي</div>
             </div>
-            <div class="stat-card animate__animated" data-animate="fadeInUp">
+            <div class="stat-card">
                 <div class="stat-number" data-count="4">0</div>
                 <div class="stat-label">سنوات خبرة</div>
             </div>
-            <div class="stat-card animate__animated" data-animate="fadeInUp">
+            <div class="stat-card">
                 <div class="stat-number" data-count="15">0</div>
                 <div class="stat-label">تقنية متقنة</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم نبذة عني والهدف المهني -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">نبذة عني</h2>
+                <p class="section-subtitle">تعرف على مسيرتي المهنية وأهدافي الطموحة في عالم تطوير البرمجيات</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>أحمد عبد الله الجنيني</h2>
+                    <p>
+                        <span class="highlight">مهندس برمجيات</span> متخصص في بناء الحلول المتكاملة (Full-Stack) لتطبيقات الويب والموبايل، 
+                        بهدف رفع الكفاءة التشغيلية وتحسين الأداء. أمتلك خبرة تقنية عميقة في لغات البرمجة المتعددة 
+                        مثل <span class="highlight">Python، C#، PHP، JavaScript</span>، بالإضافة إلى إتقان تقنيات تطوير الواجهات 
+                        والأنظمة الخلفية وقواعد البيانات.
+                    </p>
+                    <p>
+                        أتبنى منهجية معمارية صارمة في تطوير البرمجيات، حيث أعتمد أنماطاً متقدمة مثل 
+                        <span class="highlight">Clean Architecture</span> و <span class="highlight">MVVM</span> 
+                        لضمان هيكلية كود نظيفة، قابلة للاختبار، وسهلة الصيانة. ألتزم بتطبيق مبادئ الـ 
+                        <span class="highlight">SOLID</span> وأنماط التصميم (Design Patterns) لضمان استدامة المشاريع.
+                    </p>
+                    <p>
+                        أمتلك خبرة في إدارة دورة حياة تطوير البرمجيات (SDLC) باستخدام <span class="highlight">Git</span>، 
+                        مع قدرة عالية على تصميم خدمات RESTful APIs المتطورة لربط الأنظمة بكفاءة، 
+                        وسجل نجاح في تقليل الوقت التشغيلي بنسبة تصل إلى 50%.
+                    </p>
+                </div>
+                
+                <div class="about-objective">
+                    <h3>🎯 الهدف المهني</h3>
+                    <p>
+                        أسعى لأن أكون <span class="highlight">مطور برمجيات رائد</span> يقدم حلولاً مبتكرة ومستدامة 
+                        تساهم في تحويل الأفكار إلى واقع رقمي ملموس. هدفي هو بناء أنظمة برمجية عالية الجودة 
+                        تلبي احتياجات العملاء وتتجاوز توقعاتهم، مع الالتزام بأعلى معايير الجودة والأمان والأداء.
+                    </p>
+                    <p style="margin-top: 20px;">
+                        <span class="highlight">طموحي</span> هو تطوير نفسي باستمرار ومواكبة أحدث التقنيات في مجال 
+                        البرمجيات، للمساهمة في بناء مستقبل رقمي أفضل، وتقديم قيمة حقيقية للمجتمع من خلال 
+                        حلول تقنية ذكية وفعالة.
+                    </p>
+                    <p style="margin-top: 20px; color: var(--accent);">
+                        <i class="fas fa-quote-right"></i>
+                        "التكنولوجيا ليست مجرد أدوات، بل هي وسيلة لتحقيق التغيير الإيجابي وبناء مستقبل أفضل"
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -1424,22 +1412,22 @@
     <!-- قسم المشاريع -->
     <section id="projects" class="projects-section">
         <div class="container">
-            <div class="section-header animate__animated animate__fadeInDown">
+            <div class="section-header">
                 <h2 class="section-title">أبرز المشاريع</h2>
                 <p class="section-subtitle">أعمالي التي أعتز بها والتي تعكس خبرتي وتخصصي في مجالات متعددة من تطوير البرمجيات</p>
             </div>
             
             <div class="projects-grid">
-                <div class="project-card animate__animated" data-animate="fadeInUp">
+                <!-- مشروع 1: نظام محاسبي متكامل -->
+                <div class="project-card">
                     <div class="project-header" style="background: linear-gradient(135deg, #9b4993, #512bd4);">
                         <i class="fas fa-calculator project-icon"></i>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">نظام محاسبي متكامل</h3>
-                        <p class="project-desc">نظام محاسبي متقدم لتسجيل المعاملات المالية، إدارة الفواتير،وإدارة المخزون، الميزانيات العمومية، قوائم الدخل، والتقارير الماليةوالتقارير الإحصائية مع دعم متعدد العملات والمستخدمين   مع واجهة مستخدم متقدمة وتجربة مستخدم محسنة.</p>
+                        <p class="project-desc">نظام محاسبي متقدم لتسجيل المعاملات المالية، إدارة الفواتير، إدارة المخزون، الميزانيات العمومية، قوائم الدخل، والتقارير المالية والإحصائية مع دعم متعدد العملات والمستخدمين. تم بناء النظام باستخدام C# و WPF مع قاعدة بيانات SQL Server.</p>
                         <div class="project-tech">
                             <span class="csharp"><i class="fab fa-microsoft"></i> C#</span>
-                           <!--- <span class="dotnet"><i class="fab fa-windows"></i> .NET Core</span>-->
                             <span class="sqlserver"><i class="fas fa-database"></i> SQL Server</span>
                             <span class="wpf"><i class="fas fa-desktop"></i> WPF</span>
                             <span><i class="fas fa-layer-group"></i> Entity Framework</span>
@@ -1451,17 +1439,17 @@
                     </div>
                 </div>
                 
-                <div class="project-card animate__animated" data-animate="fadeInUp">
+                <!-- مشروع 2: منصة تجارة إلكترونية -->
+                <div class="project-card">
                     <div class="project-header" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6);">
                         <i class="fas fa-shopping-cart project-icon"></i>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">منصة تجارة إلكترونية</h3>
-                        <p class="project-desc"> أدرت قاعدة بيانات المنتجات، المستخدمين، وسجلات الطلبات
-                            باستخدام MySQL، مع تطبيق معايير الأمان الأساسية.</p>
+                        <p class="project-desc">منصة تجارة إلكترونية قابلة للتوسع ومستدامة على المدى الطويل، مع تأمين ضد التهديدات الأمنية وتحسين تجربة المستخدم. تم تطويرها باستخدام Laravel مع تطبيق مبادئ Clean Architecture.</p>
                         <div class="project-tech">
                             <span><i class="fab fa-php"></i> PHP</span>
-                            <span class="dotnet" ><i class="fab fa-js"></i> JavaScript & HTML</span>
+                            <span class="dotnet"><i class="fab fa-js"></i> JavaScript</span>
                             <span><i class="fab fa-react"></i> React</span>
                             <span class="sqlserver"><i class="fas fa-database"></i> MySQL</span>
                         </div>
@@ -1471,18 +1459,19 @@
                         </div>
                     </div>
                 </div>
-                <!--
-                <div class="project-card animate__animated" data-animate="fadeInUp">
+                
+                <!-- مشروع 3: منصة حجز خدمات الأعراس -->
+                <div class="project-card">
                     <div class="project-header" style="background: linear-gradient(135deg, #10b981, #3b82f6);">
-                        <i class="fas fa-mobile-alt project-icon"></i>
+                        <i class="fas fa-calendar-check project-icon"></i>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">تطبيق إدارة المهام الذكي</h3>
-                        <p class="project-desc">تطبيق موبايل متقدم لإدارة المهام الشخصية والفريقية مع مزامنة فورية، إشعارات ذكية، إحصائيات أداء، وتكامل مع أدوات الإنتاجية الشهيرة.</p>
+                        <h3 class="project-title">منصة حجز خدمات الأعراس</h3>
+                        <p class="project-desc">تطبيق للهواتف الذكية لإدارة وحجز خدمات الأعراس مع ضمان مزامنة البيانات وتفادي أي تعارض في المواعيد. تم تطويره باستخدام Flutter مع معمارية Clean Architecture وإدارة حالة Bloc/Provider.</p>
                         <div class="project-tech">
-                            <span class="wpf" ><i class="fab fa-flutter"></i> Flutter</span>
+                            <span class="wpf"><i class="fab fa-flutter"></i> Flutter</span>
                             <span class="security"><i class="fas fa-fire"></i> Firebase</span>
-                            <span class="dotnet" ><i class="fas fa-code"></i> Dart</span>
+                            <span class="dotnet"><i class="fas fa-code"></i> Dart</span>
                             <span class="sqlserver"><i class="fas fa-cloud"></i> Cloud Functions</span>
                         </div>
                         <div class="project-links">
@@ -1491,21 +1480,20 @@
                         </div>
                     </div>
                 </div>
-            -->
-                <div class="project-card animate__animated" data-animate="fadeInUp">
+                
+                <!-- مشروع 4: منصة تحليلات البيانات -->
+                <div class="project-card">
                     <div class="project-header" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">
                         <i class="fas fa-chart-line project-icon"></i>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">منصة تحليلات البيانات</h3>
-                       <!-- <p class="project-desc">منصة متقدمة لتحليل البيانات الضخمة وتقديم رؤى باستخدام خوارزميات الذكاء الاصطناعي وتصورات بيانات تفاعلية مع إمكانية تصدير التقارير.</p>-->
-                       <p class="project-desc">  حللت مجموعات بيانات كبيرة باستخدام Python و مكتبات Pandas/NumPy، و أنشأت تقارير مرئية
-                        (Dashboards) بواسطة Matplotlib/Seaborn.</p>
+                        <p class="project-desc">تحليل مجموعات بيانات كبيرة باستخدام Python ومكتبات Pandas/NumPy، وإنشاء تقارير مرئية (Dashboards) بواسطة Matplotlib/Seaborn مع استخدام خوارزميات الذكاء الاصطناعي.</p>
                         <div class="project-tech">
-                            <span class="security"><i class="fab fa-python"></i> Python</span>
-                            <span class="dotnet" ><i class="fas fa-chart-bar"></i> Pandas</span>
+                            <span class="python"><i class="fab fa-python"></i> Python</span>
+                            <span class="dotnet"><i class="fas fa-chart-bar"></i> Pandas</span>
                             <span class="sqlserver"><i class="fas fa-brain"></i> TensorFlow</span>
-                            <span class="wpf" ><i class="fas fa-tachometer-alt"></i> Dash</span>
+                            <span class="wpf"><i class="fas fa-tachometer-alt"></i> Dash</span>
                         </div>
                         <div class="project-links">
                             <a href="#" class="project-link"><i class="fab fa-github"></i> الكود المصدري</a>
@@ -1514,21 +1502,19 @@
                     </div>
                 </div>
 
-                <div class="project-card animate__animated" data-animate="fadeInUp">
+                <!-- مشروع 5: أداة أمنية لاكتشاف التهديدات -->
+                <div class="project-card">
                     <div class="project-header" style="background: linear-gradient(135deg, #3b82f6, #10b981);">
                         <i class="fas fa-shield-alt project-icon"></i>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">أداة أمنية لاكتشاف برامج الهندسة الاجتماعية</h3>
-                        <p class="project-desc">أداة أمنية مخصصة باستخدام Python تهدف إلى اكتشاف برامج الهندسة الاجتماعية 
-                        عبر تحليل اتصالات الشبكة التي يقوم بها والنشاطات. دمجت وظيفة فحص المنافذ (Port Scanning) 
-                        باستخدام مكتبات Python (مثل sockets) و أداة Nmap (عبر واجهة برمجية)، لتحديد نقاط الضعف 
-                        والمنافذ المفتوحة في الشبكة المستهدفة. وفرت واجهة رسومية لإجراء الفحص وتقديم تقارير 
-                        نتائج الأمان بشكل واضح.</p>
+                        <h3 class="project-title">أداة أمنية لاكتشاف التهديدات</h3>
+                        <p class="project-desc">أداة أمنية مرنة وقابلة للتوسعة لرصد نشاطات الشبكة المشبوهة وإرسال تنبيه أمني فوري، وتحليل الثغرات. تم تطويرها باستخدام Python مع اعتماد Modular Programming.</p>
                         <div class="project-tech">
                             <span class="python"><i class="fab fa-python"></i> Python</span>
                             <span class="csharp"><i class="fas fa-plug"></i> Socket</span>
-                            <span class="dotnet" ><i class="fas fa-satellite-dish"></i> Nmap</span>
+                            <span class="dotnet"><i class="fas fa-satellite-dish"></i> scapy</span>
+                            <span class="sqlserver"><i class="fas fa-brain"></i> psutil</span>
                             <span class="security"><i class="fas fa-shield-alt"></i> Security</span>
                         </div>
                         <div class="project-links">
@@ -1544,16 +1530,16 @@
     <!-- قسم المهارات -->
     <section id="skills" class="skills-section">
         <div class="container">
-            <div class="section-header animate__animated animate__fadeInDown">
+            <div class="section-header">
                 <h2 class="section-title">خبراتي التقنية</h2>
                 <p class="section-subtitle">مجموعة المهارات التقنية التي أتقنها والتي تمكنني من تقديم حلول برمجية مبتكرة وفعالة</p>
             </div>
             
             <div class="skills-container">
-                <div class="skill-category animate__animated" data-animate="fadeInLeft">
+                <div class="skill-category">
                     <div class="skill-header">
                         <div class="skill-icon">
-                            <i class="fab fa-python"></i>
+                            <i class="fas fa-server"></i>
                         </div>
                         <h3 class="skill-title">تطوير Backend</h3>
                     </div>
@@ -1606,7 +1592,7 @@
                     </ul>
                 </div>
                 
-                <div class="skill-category animate__animated" data-animate="fadeInUp">
+                <div class="skill-category">
                     <div class="skill-header">
                         <div class="skill-icon">
                             <i class="fab fa-js"></i>
@@ -1653,7 +1639,7 @@
                     </ul>
                 </div>
                 
-                <div class="skill-category animate__animated" data-animate="fadeInRight">
+                <div class="skill-category">
                     <div class="skill-header">
                         <div class="skill-icon">
                             <i class="fas fa-mobile-alt"></i>
@@ -1706,13 +1692,13 @@
     <!-- قسم الخدمات -->
     <section id="services" class="services-section">
         <div class="container">
-            <div class="section-header animate__animated animate__fadeInDown">
+            <div class="section-header">
                 <h2 class="section-title">الخدمات التي أقدمها</h2>
                 <p class="section-subtitle">حلول برمجية متكاملة تلبي احتياجات عملك وتحول أفكارك إلى واقع رقمي ملموس</p>
             </div>
             
             <div class="services-grid">
-                <div class="service-card animate__animated" data-animate="fadeInUp">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
@@ -1720,23 +1706,23 @@
                     <p class="service-desc">تصميم وتطوير تطبيقات ويب متكاملة وذكية باستخدام أحدث التقنيات مع واجهات مستخدم جذابة وسهلة الاستخدام.</p>
                 </div>
                 
-                <div class="service-card animate__animated" data-animate="fadeInUp">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <h3 class="service-title">تطوير تطبيقات الموبايل</h3>
-                    <p class="service-desc">بناء تطبيقات موبايل عالية الجودة لنظامي Android و iOS باستخدام تقنيات متطورة تضمن الأداء العالي والتجربة المثالية.</p>
+                    <p class="service-desc">بناء تطبيقات موبايل عالية الجودة لنظامي Android و iOS باستخدام Flutter و Firebase مع ضمان الأداء العالي والتجربة المثالية.</p>
                 </div>
                 
-                <div class="service-card animate__animated" data-animate="fadeInUp">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-calculator"></i>
                     </div>
                     <h3 class="service-title">أنظمة المحاسبة والمالية</h3>
-                    <p class="service-desc">تطوير أنظمة محاسبية وإدارية مالية متكاملة مع دعم التقارير المالية والميزانيات وقوائم الدخل.</p>
+                    <p class="service-desc">تطوير أنظمة محاسبية وإدارية مالية متكاملة مع دعم التقارير المالية والميزانيات وقوائم الدخل باستخدام C# و SQL Server.</p>
                 </div>
 
-                <div class="service-card animate__animated" data-animate="fadeInUp">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-database"></i>
                     </div>
@@ -1744,36 +1730,35 @@
                     <p class="service-desc">تصميم وإدارة قواعد بيانات متطورة وآمنة مع تحسين الأداء وضمان سلامة البيانات وسهولة الوصول إليها.</p>
                 </div>
 
-                <div class="service-card animate__animated" data-animate="fadeInUp">
+                <div class="service-card">
                     <div class="service-icon">
-                        <i  class="fab fa-windows"></i>
+                        <i class="fab fa-windows"></i>
                     </div>
-                    <h3 class="service-title"  >تطوير تطبيقات سطح المكتب</h3>
-                    <p class="service-desc"> تطوير تطبيقات سطح المكتب تفاعلية باستخدام C# وPython (Tkinter & PyQt)، أدّت إلى أتمتة مهام
-                        إدخال البيانات بنسبة 70% وتقليل الوقت المستغرق بنسبة 50%</p>
+                    <h3 class="service-title">تطوير تطبيقات سطح المكتب</h3>
+                    <p class="service-desc">تطوير تطبيقات سطح مكتب تفاعلية باستخدام C# (WinForms, WPF) و Python (Tkinter, PyQt) لأتمتة المهام وتحسين الإنتاجية.</p>
                 </div>
-  <!--
-                <div class="service-card animate__animated" data-animate="fadeInUp">
+
+                <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-chart-pie"></i>
                     </div>
-                    <h3 class="service-title">تطوير أدوات الأمن السيبراني</h3>
-                    <p class="service-desc">بناء أدوات وأسكربتات أمنية لاكتشاف الثغرات الأمنية وفحص الشبكات والأنظمة باستخدام Python وتقنيات الأمان المتقدمة.</p>
+                    <h3 class="service-title">تحليل البيانات والذكاء الاصطناعي</h3>
+                    <p class="service-desc">تحليل البيانات الضخمة وتقديم رؤى باستخدام Python، Pandas، و TensorFlow مع تصورات بيانات تفاعلية وتقارير احترافية.</p>
                 </div>
             </div>
-        </div>-->
+        </div>
     </section>
     
     <!-- قسم الاتصال -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="section-header animate__animated animate__fadeInDown">
+            <div class="section-header">
                 <h2 class="section-title">لنتواصل</h2>
                 <p class="section-subtitle">هل لديك مشروع أو فكرة تريد تنفيذها؟ أنا هنا لمساعدتك في تحويل أفكارك إلى واقع رقمي متميز</p>
             </div>
             
             <div class="contact-container">
-                <div class="contact-info animate__animated" data-animate="fadeInLeft">
+                <div class="contact-info">
                     <h3>لنعمل معاً</h3>
                     <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px;">
                         سواء كنت تبحث عن مطور للانضمام إلى فريقك، تحتاج إلى تطوير مشروع برمجي، أو تريد استشارة تقنية، فأنا هنا لمساعدتك في تحقيق أهدافك الرقمية.
@@ -1792,9 +1777,7 @@
                             <i class="fas fa-phone"></i>
                             <div>
                                 <h4 style="margin-bottom: 5px;">الهاتف</h4>
-                                <p style="color: var(--text-secondary);direction: ltr; 
-                                /* 💡 محاذاة النص داخل العنصر لليمين إذا كان داخل نص عربي */
-                                text-align: right;"> +967 775 197 514</p>
+                                <p style="color: var(--text-secondary); direction: ltr; text-align: right;">+967 775 197 514</p>
                             </div>
                         </div>
                         
@@ -1802,13 +1785,13 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <h4 style="margin-bottom: 5px;">الموقع</h4>
-                                <p style="color: var(--text-secondary);"> اليمن / صنعاء </p>
+                                <p style="color: var(--text-secondary);">اليمن / صنعاء</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="contact-form animate__animated" data-animate="fadeInRight">
+                <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
                             <input type="text" class="form-control" name="name" placeholder="الاسم الكامل" required>
@@ -1821,11 +1804,6 @@
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" name="message" rows="6" placeholder="محتوى الرسالة" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-info" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 15px;">
-                                <i class="fas fa-info-circle"></i> سيتم حفظ رسالتك وإرسال إشعار إليّ فوراً
-                            </div>
                         </div>
                         <button type="submit" class="submit-btn">
                             <i class="fas fa-paper-plane"></i> إرسال الرسالة
@@ -1845,7 +1823,7 @@
                         <span class="logo-code">&lt;/&gt;</span>
                         <span>أحمد الجنيني</span>
                     </div>
-                    <p class="footer-desc">مطور برمجيات متخصص في بناء حلول رقمية مبتكرة وعملية تلبي احتياجات العصر الرقمي وتساهم في تحقيق الأهداف التجارية.</p>
+                    <p class="footer-desc">مهندس برمجيات متخصص في بناء حلول رقمية مبتكرة وعملية تلبي احتياجات العصر الرقمي وتساهم في تحقيق الأهداف التجارية.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-github"></i></a>
@@ -1858,6 +1836,7 @@
                     <h4>روابط سريعة</h4>
                     <ul class="footer-links">
                         <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-left"></i> نبذة عني</a></li>
                         <li><a href="#projects"><i class="fas fa-chevron-left"></i> المشاريع</a></li>
                         <li><a href="#skills"><i class="fas fa-chevron-left"></i> المهارات</a></li>
                         <li><a href="#services"><i class="fas fa-chevron-left"></i> الخدمات</a></li>
@@ -1877,62 +1856,60 @@
             </div>
             
             <div class="copyright">
-                <p>© 2026 جميع الحقوق محفوظة</p>
+                <p>© 2026 جميع الحقوق محفوظة - أحمد عبد الله أحمد الجنيني</p>
             </div>
         </div>
     </footer>
-<!-- مكتبة EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- مكتبة EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
 <script>
-    // نظام إرسال واستقبال الرسائل
-    let messages = JSON.parse(localStorage.getItem('messages')) || [];
-  // ============== متغير النص المعدل (تأكد من وجود <br> في المكان المطلوب) ==============
-const typewriterText = "مطور ويب• مصمم تطبيقات •محلل بيانات <br> • مطور حلول متكاملة";
-let typewriterIndex = 0;
-const typewriterElement = document.getElementById('typewriter');
-
-// ============== دالة الكتابة المُعدَّلة والمُحسَّنة ==============
-function typeWriter() {
-    if (typewriterIndex < typewriterText.length) {
+    // =============================================
+    // منع الأخطاء التي تسبب الصفحة البيضاء
+    // =============================================
+    
+    // متغيرات عامة
+    let messages = [];
+    let typewriterInterval = null;
+    let terminalInterval = null;
+    
+    // =============================================
+    // دالة الكتابة التلقائية
+    // =============================================
+    function startTypewriter() {
+        const typewriterText = "مطور ويب • مصمم تطبيقات • محلل بيانات • مطور حلول متكاملة";
+        const typewriterElement = document.getElementById('typewriter');
+        if (!typewriterElement) return;
         
-        let char = typewriterText.charAt(typewriterIndex);
-
-        // 1. 💡 معالجة وسم <br> لتقسيم السطر
-        if (typewriterText.substring(typewriterIndex, typewriterIndex + 4) === '<br>') {
-            typewriterElement.innerHTML += '<br>';
-            typewriterIndex += 4; // تخطي 4 أحرف: <, b, r, >
-            setTimeout(typeWriter, 50); // تأخير قصير للانتقال للسطر التالي
-            return; // إنهاء التنفيذ هنا
-        } 
+        let index = 0;
+        typewriterElement.innerHTML = '';
         
-        // 2. 💡 معالجة المسافة غير القابلة للكسر (&nbsp;)
-        // على الرغم من أن هذا ليس ضرورياً في هذه الدالة، لكنه قد يكون مفيداً في السياق العام
-        else if (typewriterText.substring(typewriterIndex, typewriterIndex + 6) === '&nbsp;') {
-            typewriterElement.innerHTML += '&nbsp;';
-            typewriterIndex += 6; // تخطي 6 أحرف
-            setTimeout(typeWriter, 50); 
-            return;
+        function typeChar() {
+            if (index < typewriterText.length) {
+                typewriterElement.innerHTML += typewriterText.charAt(index);
+                index++;
+                setTimeout(typeChar, 100);
+            } else {
+                setTimeout(() => {
+                    typewriterElement.innerHTML = '';
+                    index = 0;
+                    setTimeout(typeChar, 500);
+                }, 2000);
+            }
         }
         
-        // 3. 💡 طباعة الحرف العادي (افتراضياً)
-        else {
-            typewriterElement.innerHTML += char;
-            typewriterIndex++;
-            setTimeout(typeWriter, 100);
-            return;
-        }
-
-    } else {
-        // منطق التكرار بعد الانتهاء
-        setTimeout(() => {
-            typewriterElement.innerHTML = '';
-            typewriterIndex = 0;
-            setTimeout(typeWriter, 500);
-        }, 2000);
+        typeChar();
     }
-}
-    // كود C# للمحاكاة في الطرفية
-    const csharpCode = `
+    
+    // =============================================
+    // دالة عرض الكود في الطرفية
+    // =============================================
+    function startTerminal() {
+        const terminalContent = document.getElementById('terminalContent');
+        if (!terminalContent) return;
+        
+        const csharpCode = `
 dev@terminal:~$ dotnet run AccountingSystem.cs
 
 // ملف: AccountingSystem.cs - نظام محاسبي بلغة C#
@@ -2006,13 +1983,11 @@ class Program
 
         var accounting = new AccountingManager();
 
-        // إضافة معاملات تجريبية
         accounting.AddTransaction("بيع منتجات", 15000, "دخل");
         accounting.AddTransaction("رواتب الموظفين", 8000, "مصروف");
         accounting.AddTransaction("خدمات إعلانية", 3000, "مصروف");
         accounting.AddTransaction("إيرادات استشارات", 5000, "دخل");
 
-        // توليد التقرير
         accounting.GenerateFinancialReport();
 
         Console.WriteLine("\\n✅ النظام يعمل بنجاح!");
@@ -2023,91 +1998,100 @@ class Program
 
 dev@terminal:~$ 
 `;
-    
-    // تطبيق ألوان الكود
-    function highlightCode(code) {
-        return code
-            .replace(/\/\/.*$/gm, '<span class="code-comment">$&</span>')
-            .replace(/"(?:[^"\\]|\\.)*"/g, '<span class="code-string">$&</span>')
-            .replace(/\b(using|namespace|class|public|private|static|void|int|string|decimal|DateTime|var|if|else|foreach|return|new)\b/g, '<span class="code-keyword">$1</span>')
-            .replace(/\b(Console|List|Transaction|AccountingManager|Program)\b/g, '<span class="code-class">$1</span>')
-            .replace(/\b(AddTransaction|CalculateBalance|GenerateFinancialReport|Main|WriteLine|Where|Sum)\b/g, '<span class="code-function">$1</span>')
-            .replace(/\b(Id|Description|Amount|Date|Type|transactions|balance|income|expenses)\b/g, '<span class="code-variable">$1</span>')
-            .replace(/\b\d+\b/g, '<span class="code-number">$&</span>')
-            .replace(/\./g, '<span class="code-operator">.</span>')
-            .replace(/\$"([^"]*)"/g, '<span class="code-string">$&</span>')
-            .replace(/dev@terminal/g, '<span class="code-prompt">dev@terminal</span>')
-            .replace(/~/g, '<span class="code-path">~</span>')
-            .replace(/\n/g, '<br>')
-            .replace(/ /g, '&nbsp;');
-    }
-    
-    // عرض الكود في الطرفية
-    function displayCodeInTerminal() {
-        const terminalContent = document.getElementById('terminalContent');
+        
+        // تلوين الكود
+        function highlightCode(code) {
+            return code
+                .replace(/\/\/.*$/gm, '<span class="code-comment">$&</span>')
+                .replace(/"(?:[^"\\]|\\.)*"/g, '<span class="code-string">$&</span>')
+                .replace(/\b(using|namespace|class|public|private|static|void|int|string|decimal|DateTime|var|if|else|foreach|return|new)\b/g,
+                    '<span class="code-keyword">$1</span>')
+                .replace(/\b(Console|List|Transaction|AccountingManager|Program)\b/g,
+                    '<span class="code-class">$1</span>')
+                .replace(
+                    /\b(AddTransaction|CalculateBalance|GenerateFinancialReport|Main|WriteLine|Where|Sum)\b/g,
+                    '<span class="code-function">$1</span>')
+                .replace(/\b(Id|Description|Amount|Date|Type|transactions|balance|income|expenses)\b/g,
+                    '<span class="code-variable">$1</span>')
+                .replace(/\b\d+\b/g, '<span class="code-number">$&</span>')
+                .replace(/\./g, '<span class="code-operator">.</span>')
+                .replace(/\$"([^"]*)"/g, '<span class="code-string">$&</span>')
+                .replace(/dev@terminal/g, '<span class="code-prompt">dev@terminal</span>')
+                .replace(/~/g, '<span class="code-path">~</span>')
+                .replace(/\n/g, '<br>')
+                .replace(/ /g, '&nbsp;');
+        }
+        
         const highlightedCode = highlightCode(csharpCode);
+        let charIndex = 0;
+        terminalContent.innerHTML = '';
         
-        let currentChar = 0;
-        const totalChars = highlightedCode.length;
-        
-        function typeCodeChar() {
-            if (currentChar < totalChars) {
-                const char = highlightedCode.charAt(currentChar);
+        function typeChar() {
+            if (charIndex < highlightedCode.length) {
+                const char = highlightedCode.charAt(charIndex);
                 
-                // معالجة خاصة للتباعدات
                 if (char === '&') {
-                    // التخطي إلى نهاية الـ HTML entity
-                    const endIndex = highlightedCode.indexOf(';', currentChar);
+                    const endIndex = highlightedCode.indexOf(';', charIndex);
                     if (endIndex !== -1) {
-                        terminalContent.innerHTML += highlightedCode.substring(currentChar, endIndex + 1);
-                        currentChar = endIndex + 1;
+                        terminalContent.innerHTML += highlightedCode.substring(charIndex, endIndex + 1);
+                        charIndex = endIndex + 1;
                     } else {
                         terminalContent.innerHTML += char;
-                        currentChar++;
+                        charIndex++;
                     }
                 } else if (char === '<') {
-                    // التخطي إلى نهاية الوسم
-                    const endIndex = highlightedCode.indexOf('>', currentChar);
+                    const endIndex = highlightedCode.indexOf('>', charIndex);
                     if (endIndex !== -1) {
-                        terminalContent.innerHTML += highlightedCode.substring(currentChar, endIndex + 1);
-                        currentChar = endIndex + 1;
+                        terminalContent.innerHTML += highlightedCode.substring(charIndex, endIndex + 1);
+                        charIndex = endIndex + 1;
                     } else {
                         terminalContent.innerHTML += char;
-                        currentChar++;
+                        charIndex++;
                     }
                 } else {
                     terminalContent.innerHTML += char;
-                    currentChar++;
+                    charIndex++;
                 }
                 
-                // التمرير للأسفل
                 terminalContent.scrollTop = terminalContent.scrollHeight;
                 
-                // السرعة متفاوتة حسب المحتوى
                 let speed = 10;
                 if (char === '\n' || char === '<') speed = 50;
                 if (char === ' ') speed = 5;
                 
-                setTimeout(typeCodeChar, speed);
+                setTimeout(typeChar, speed);
             } else {
-                // إضافة المؤشر الوامض في النهاية
                 terminalContent.innerHTML += '<span class="cursor"></span>';
             }
         }
         
-        // بدء الكتابة بعد تأخير قصير
-        setTimeout(typeCodeChar, 500);
+        setTimeout(typeChar, 500);
     }
     
-    // عداد الإحصائيات
+    // =============================================
+    // دالة تحريك أشرطة المهارات
+    // =============================================
+    function animateSkillBars() {
+        const skillBars = document.querySelectorAll('.skill-level-fill');
+        skillBars.forEach(bar => {
+            const level = bar.getAttribute('data-level');
+            if (level) {
+                bar.style.width = level + '%';
+            }
+        });
+    }
+    
+    // =============================================
+    // دالة تحريك الأعداد
+    // =============================================
     function animateCounters() {
         const counters = document.querySelectorAll('.stat-number');
         counters.forEach(counter => {
-            const target = +counter.getAttribute('data-count');
-            const increment = target / 100;
+            const target = parseInt(counter.getAttribute('data-count')) || 0;
             let current = 0;
+            const increment = target / 80;
             
-            const updateCounter = () => {
+            function updateCounter() {
                 if (current < target) {
                     current += increment;
                     counter.textContent = Math.ceil(current);
@@ -2115,64 +2099,78 @@ dev@terminal:~$
                 } else {
                     counter.textContent = target;
                 }
-            };
-            
+            }
             updateCounter();
         });
     }
     
-    // شريط المهارات المتحرك
-    function animateSkillBars() {
-        const skillBars = document.querySelectorAll('.skill-level-fill');
-        skillBars.forEach(bar => {
-            const level = bar.getAttribute('data-level');
-            bar.style.width = level + '%';
-        });
+    // =============================================
+    // دالة مراقبة التمرير
+    // =============================================
+    function setupScrollObserver() {
+        let countersAnimated = false;
+        let skillsAnimated = false;
+        
+        const observerOptions = {
+            threshold: 0.3
+        };
+        
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersAnimated) {
+                    animateCounters();
+                    countersAnimated = true;
+                }
+            });
+        }, observerOptions);
+        
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !skillsAnimated) {
+                    animateSkillBars();
+                    skillsAnimated = true;
+                }
+            });
+        }, observerOptions);
+        
+        const statsSection = document.querySelector('.stats-section');
+        const skillsSection = document.querySelector('.skills-section');
+        
+        if (statsSection) statsObserver.observe(statsSection);
+        if (skillsSection) skillsObserver.observe(skillsSection);
     }
     
-    // تأثيرات التمرير
-    function handleScrollAnimations() {
-        const elements = document.querySelectorAll('[data-animate]');
+    // =============================================
+    // دالة شريط التنقل
+    // =============================================
+    function setupNavbar() {
+        const navbar = document.getElementById('navbar');
+        if (!navbar) return;
         
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
-            
-            if (elementTop < window.innerHeight - elementVisible) {
-                const animation = element.getAttribute('data-animate');
-                element.classList.add('animate__animated', `animate__${animation}`);
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
         });
     }
     
-    // شريط التنقل المتغير
-    function handleNavbarScroll() {
-        const navbar = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    }
-    
-    // قائمة الجوال
+    // =============================================
+    // دالة القائمة الجوال
+    // =============================================
     function setupMobileMenu() {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
         
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            mobileMenuBtn.innerHTML = navLinks.style.display === 'flex' ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
+        if (!mobileMenuBtn || !navLinks) return;
         
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navLinks.style.display = 'none';
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                }
-            });
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = navLinks.style.display === 'flex';
+            navLinks.style.display = isOpen ? 'none' : 'flex';
+            mobileMenuBtn.innerHTML = isOpen ?
+                '<i class="fas fa-bars"></i>' :
+                '<i class="fas fa-times"></i>';
         });
         
         if (window.innerWidth <= 768) {
@@ -2188,8 +2186,10 @@ dev@terminal:~$
         }
     }
     
-    // التنقل السلس
-    function setupSmoothScrolling() {
+    // =============================================
+    // دالة التنقل السلس
+    // =============================================
+    function setupSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -2211,246 +2211,37 @@ dev@terminal:~$
             });
         });
     }
-  
-    // إظهار الإشعارات
-    function showNotification(message, type = 'info') {
-        const existingNotification = document.querySelector('.notification');
-        if (existingNotification) {
-            existingNotification.remove();
-        }
-        
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.innerHTML = `
-            <div class="notification-content">
-                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-                <span>${message}</span>
-            </div>
-            <button class="notification-close"><i class="fas fa-times"></i></button>
-        `;
-        
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            notification.classList.add('show');
-        }, 10);
-        
-        setTimeout(() => {
-            notification.classList.remove('show');
-            setTimeout(() => {
-                notification.remove();
-            }, 300);
-        }, 5000);
-        
-        notification.querySelector('.notification-close').addEventListener('click', () => {
-            notification.classList.remove('show');
-            setTimeout(() => {
-                notification.remove();
-            }, 300);
-        });
-    }
     
-    // تحديث عدد الرسائل غير المقروءة
-    function updateUnreadCount() {
-        const unreadCount = messages.filter(msg => !msg.read).length;
-       // const messageIndicator = document.getElementById('messageIndicator');
-      //  const messageCount = document.getElementById('messageCount');
+    // =============================================
+    // دالة الجسيمات
+    // =============================================
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles-js');
+        if (!particlesContainer) return;
         
-        if (unreadCount > 0) {
-           // messageIndicator.style.display = 'flex';
-           // messageCount.textContent = unreadCount;
-        } else {
-            messageIndicator.style.display = 'none';
-        }
-    }
-    /*
-    // لوحة عرض الرسائل
-    function showMessagesPanel() {
-        const existingPanel = document.querySelector('.messages-panel');
-        if (existingPanel) {
-            existingPanel.classList.remove('show');
-            setTimeout(() => {
-                existingPanel.remove();
-            }, 300);
-            return;
-        }
+        const particleCount = 40;
         
-        const panel = document.createElement('div');
-        panel.className = 'messages-panel';
-        
-        const sortedMessages = [...messages].sort((a, b) => new Date(b.date) - new Date(a.date));
-        
-        panel.innerHTML = `
-            <div class="messages-header">
-                <h3>الرسائل الواردة (${messages.length})</h3>
-                <button class="close-panel"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="messages-list">
-                ${sortedMessages.length > 0 ? 
-                    sortedMessages.map((msg, index) => `
-                        <div class="message-item ${!msg.read ? 'unread' : ''}" data-id="${msg.id}">
-                            <div class="message-header">
-                                <div class="message-sender">
-                                    <strong>${msg.name}</strong>
-                                    <small>${msg.email}</small>
-                                </div>
-                                <div class="message-date">
-                                    ${new Date(msg.date).toLocaleDateString('ar-SA')}
-                                </div>
-                            </div>
-                            <div class="message-subject">${msg.subject || 'بدون موضوع'}</div>
-                            <div class="message-preview">${msg.message.substring(0, 100)}${msg.message.length > 100 ? '...' : ''}</div>
-                            <div class="message-actions">
-                                <button class="mark-read" data-id="${msg.id}">
-                                    <i class="fas fa-${msg.read ? 'envelope-open' : 'envelope'}"></i>
-                                    ${msg.read ? 'غير مقروءة' : 'تم القراءة'}
-                                </button>
-                                <button class="reply-btn" data-email="${msg.email}">
-                                    <i class="fas fa-reply"></i> رد
-                                </button>
-                                <button class="delete-btn" data-id="${msg.id}">
-                                    <i class="fas fa-trash"></i> حذف
-                                </button>
-                            </div>
-                        </div>
-                    `).join('') : 
-                    '<div class="empty-messages">لا توجد رسائل</div>'
-                }
-            </div>
-        `;
-        
-        document.body.appendChild(panel);
-        
-        setTimeout(() => {
-            panel.classList.add('show');
-        }, 10);
-        
-        panel.querySelector('.close-panel').addEventListener('click', () => {
-            panel.classList.remove('show');
-            setTimeout(() => {
-                panel.remove();
-            }, 300);
-        });
-        
-        panel.querySelectorAll('.mark-read').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const id = parseInt(this.getAttribute('data-id'));
-                const message = messages.find(m => m.id === id);
-                if (message) {
-                    message.read = !message.read;
-                    localStorage.setItem('messages', JSON.stringify(messages));
-                    updateUnreadCount();
-                    showMessagesPanel();
-                }
-            });
-        });
-        
-        panel.querySelectorAll('.delete-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const id = parseInt(this.getAttribute('data-id'));
-                messages = messages.filter(m => m.id !== id);
-                localStorage.setItem('messages', JSON.stringify(messages));
-                updateUnreadCount();
-                showMessagesPanel();
-            });
-        });
-        
-        panel.querySelectorAll('.reply-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const email = this.getAttribute('data-email');
-                const contactSection = document.getElementById('contact');
-                const form = document.getElementById('contactForm');
-                
-                window.scrollTo({
-                    top: contactSection.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-                
-                const emailField = form.querySelector('input[name="email"]');
-                if (emailField) {
-                    emailField.value = email;
-                    emailField.focus();
-                }
-                
-                panel.classList.remove('show');
-                setTimeout(() => {
-                    panel.remove();
-                }, 300);
-            });
-        });
-    }
-    */
-    // إعداد نموذج الاتصال المحسن
-    function setupContactForm() {
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                // جمع البيانات من النموذج
-                const formData = new FormData(this);
-                const data = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    subject: formData.get('subject') || 'رسالة جديدة من الموقع',
-                    message: formData.get('message'),
-                    date: new Date().toISOString(),
-                    read: false,
-                    id: Date.now()
-                };
-                
-                // التحقق من البيانات
-                if (!data.name || !data.email || !data.message) {
-                    showNotification('يرجى ملء جميع الحقول المطلوبة', 'error');
-                    return;
-                }
-                
-                if (!validateEmail(data.email)) {
-                    showNotification('يرجى إدخال بريد إلكتروني صحيح', 'error');
-                    return;
-                }
-                
-                // إظهار مؤشر التحميل
-                const submitBtn = this.querySelector('.submit-btn');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
-                submitBtn.disabled = true;
-                let ee=data.email;
-                try {
-                    // إرسال الرسالة
-                    const result = await sendEmail(data,ee);
-                    
-                    if (result.success) {
-                        if (result.emailSent) {
-                            showNotification('✅ تم إرسال رسالتك بنجاح! سأتواصل معك قريباً.', 'success');
-                        } else {
-                            showNotification('⚠️ تم حفظ رسالتك محلياً وسأطلع عليها قريباً', 'info');
-                        }
-                        
-                        this.reset();
-                        updateUnreadCount();
-                    } else {
-                        showNotification('حدث خطأ أثناء إرسال رسالتك', 'error');
-                    }
-                } catch (error) {
-                    console.error('خطأ في إرسال الرسالة:', error);
-                    showNotification('حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.', 'error');
-                } finally {
-                    // إعادة زر الإرسال إلى حالته الأصلية
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }
-            });
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                        position: absolute;
+                        width: ${Math.random() * 4 + 2}px;
+                        height: ${Math.random() * 4 + 2}px;
+                        background: rgba(${Math.floor(Math.random() * 100 + 155)}, ${Math.floor(Math.random() * 100 + 155)}, 255, ${Math.random() * 0.4 + 0.1});
+                        border-radius: 50%;
+                        top: ${Math.random() * 100}vh;
+                        left: ${Math.random() * 100}vw;
+                        box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+                        animation: float ${Math.random() * 20 + 10}s ease-in-out infinite;
+                        animation-delay: ${Math.random() * 5}s;
+                    `;
+            particlesContainer.appendChild(particle);
         }
     }
     
-    // التحقق من صحة البريد الإلكتروني
-    function validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-    }
-    
-    // ============== إعداد EmailJS ==============
+    // =============================================
+    // إعداد EmailJS
+    // =============================================
     (function() {
         try {
             emailjs.init("Yu5DL84H0uQavAVPg");
@@ -2459,16 +2250,43 @@ dev@terminal:~$
             console.error("❌ خطأ في تهيئة EmailJS:", error);
         }
     })();
-
-    // ============== إرسال البريد للزائر (تأكيد) ==============
-    async function sendConfirmationToVisitor(messageData,nn) {
+    
+    // =============================================
+    // التحقق من صحة البريد الإلكتروني
+    // =============================================
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+    
+    // =============================================
+    // تحديث عدد الرسائل غير المقروءة
+    // =============================================
+    function updateUnreadCount() {
+        const unreadCount = messages.filter(msg => !msg.read).length;
+        const messageIndicator = document.getElementById('messageIndicator');
+        const messageCount = document.getElementById('messageCount');
+        
+        if (messageIndicator && messageCount) {
+            if (unreadCount > 0) {
+                messageIndicator.style.display = 'flex';
+                messageCount.textContent = unreadCount;
+            } else {
+                messageIndicator.style.display = 'none';
+            }
+        }
+    }
+    
+    // =============================================
+    // إرسال البريد للزائر (تأكيد)
+    // =============================================
+    async function sendConfirmationToVisitor(messageData, visitorEmail) {
         try {
             const confirmationParams = {
-                toe: nn, // بريد الزائر
+                to_email: visitorEmail,
                 name: messageData.name,
-                to_email: nn,
-                title: messageData.subject,
-                message: `عزيزي/عزيزتي ${nn},\n\nشكراً لتواصلك معي. لقد تلقيت رسالتك وسأقوم بالرد عليك في أقرب وقت ممكن.\n\nرسالتك: "\n\n     ${    messageData.message.substring(0, 100)    }  \n\n   "\n\nمع خالص التقدير،\nأحمد الجنيني\nمطور برمجيات`,
+                subject: messageData.subject || "شكراً لتواصلك",
+                message: `عزيزي/عزيزتي ${messageData.name},\n\nشكراً لتواصلك معي. لقد تلقيت رسالتك وسأقوم بالرد عليك في أقرب وقت ممكن.\n\nرسالتك: "${messageData.message.substring(0, 100)}..."\n\nمع خالص التقدير،\nأحمد الجنيني\nمطور برمجيات`,
                 date: new Date().toLocaleString('ar-SA')
             };
             
@@ -2478,48 +2296,55 @@ dev@terminal:~$
                 confirmationParams
             );
             
-            console.log("✅ تم إرسال تأكيد للزائر");
-          
+            console.log("✅ تم إرسال تأكيد للزائر:", visitorEmail);
             return true;
         } catch (error) {
             console.error("❌ فشل إرسال تأكيد للزائر:", error);
             return false;
         }
     }
-
-    // ============== إرسال البريد للمالك ==============
-    async function sendToOwner(messageData,nn) {
+    
+    // =============================================
+    // إرسال البريد للمالك
+    // =============================================
+    async function sendToOwner(messageData, ownerEmail) {
         try {
             const ownerParams = {
-                to_email:  nn, // بريدك أنت
-                name: messageData.name,
-                to_email: nn, // بريد الزائر
-                title: messageData.subject || "رسالة جديدة من موقع أحمد الجنيني",
+                to_email: ownerEmail,
+                from_name: messageData.name,
+                from_email: messageData.email,
+                subject: messageData.subject || "رسالة جديدة من موقع أحمد الجنيني",
                 message: messageData.message,
                 date: new Date().toLocaleString('ar-SA'),
                 phone: "لم يذكر",
                 ip_address: "غير معروف"
             };
             
-           /* await emailjs.send(
+            await emailjs.send(
                 "service_0hnqzcf",
                 "template_pteseuk",
                 ownerParams
-            );*/
+            );
             
-            console.log("✅ تم إرسال الرسالة للمالك بنجاح!");
-            return { success: true, method: "primary" };
-            
+            console.log("✅ تم إرسال الرسالة للمالك:", ownerEmail);
+            return { success: true };
         } catch (error) {
             console.error("❌ فشل إرسال الرسالة للمالك:", error);
             return { success: false, error: error };
         }
     }
+    
+    // =============================================
+    // دالة الإرسال الرئيسية
+    // =============================================
 
+    
     // ============== دالة الإرسال الرئيسية ==============
-    async function sendEmail(messageData,messageData2) {
+       async function sendEmail(messageData,messageData2) {
         return new Promise(async (resolve) => {
             try {
+                console.log("📧 بريد الزائر:", messageData2);
+    
                 // 1. إعداد بيانات الرسالة
                 const fullMessageData = {
                     id: Date.now(),
@@ -2539,7 +2364,7 @@ dev@terminal:~$
             //   fullMessageData.emailSentToOwner = ownerResult;
                 
                 // 3. إرسال تأكيد للزائر
-                const visitorResult = await sendConfirmationToVisitor(fullMessageData,fullMessageData.to_email);
+                const visitorResult = await sendConfirmationToVisitor(fullMessageData,messageData2);
                 fullMessageData.emailSentToVisitor = visitorResult.success;
                 
                 // 4. تحديث حالة الإرسال
@@ -2589,96 +2414,138 @@ dev@terminal:~$
         });
     }
     
-    // جسيمات الخلفية
-    function createParticles() {
-        const particlesContainer = document.getElementById('particles-js');
-        if (!particlesContainer) return;
+    // =============================================
+    // إظهار الإشعارات
+    // =============================================
+    function showNotification(message, type = 'info') {
+        const existing = document.querySelector('.notification');
+        if (existing) existing.remove();
         
-        const particleCount = 50;
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.innerHTML = `
+                    <div class="notification-content">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                        <span>${message}</span>
+                    </div>
+                    <button class="notification-close"><i class="fas fa-times"></i></button>
+                `;
         
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.style.position = 'absolute';
-            particle.style.width = Math.random() * 5 + 2 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.background = `rgba(${Math.floor(Math.random() * 100 + 155)}, ${Math.floor(Math.random() * 100 + 155)}, 255, ${Math.random() * 0.5 + 0.1})`;
-            particle.style.borderRadius = '50%';
-            particle.style.top = Math.random() * 100 + 'vh';
-            particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.boxShadow = '0 0 10px rgba(59, 130, 246, 0.5)';
-            
-            const duration = Math.random() * 20 + 10;
-            particle.style.animation = `float ${duration}s ease-in-out infinite`;
-            particle.style.animationDelay = Math.random() * 5 + 's';
-            
-            particlesContainer.appendChild(particle);
-        }
+        document.body.appendChild(notification);
+        
+        setTimeout(() => notification.classList.add('show'), 10);
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => notification.remove(), 300);
+        }, 5000);
+        
+        notification.querySelector('.notification-close').addEventListener('click', () => {
+            notification.classList.remove('show');
+            setTimeout(() => notification.remove(), 300);
+        });
     }
     
-    // تهيئة كل شيء عند تحميل الصفحة
-    document.addEventListener('DOMContentLoaded', function() {
-        // بدء تأثيرات الكتابة
-        typeWriter();
-        displayCodeInTerminal();
+    // =============================================
+    // إعداد نموذج الاتصال المحسن
+    // =============================================
+    function setupContactForm() {
+        const contactForm = document.getElementById('contactForm');
+        if (!contactForm) return;
         
-        // إعداد قائمة الجوال
-        setupMobileMenu();
-        
-        // إعداد التنقل السلس
-        setupSmoothScrolling();
-        
-        // إعداد نموذج الاتصال
-        setupContactForm();
-        
-        // إعداد مؤشر الرسائل
-        updateUnreadCount();
-        
-        // إضافة حدث لمؤشر الرسائل
-       // document.getElementById('messageIndicator').addEventListener('click', showMessagesPanel);
-        
-        // أحداث التمرير
-        window.addEventListener('scroll', () => {
-            handleNavbarScroll();
-            handleScrollAnimations();
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // جمع البيانات من النموذج
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                subject: formData.get('subject') || 'رسالة جديدة من الموقع',
+                message: formData.get('message')
+            };
+            
+            // التحقق من البيانات
+            if (!data.name || !data.email || !data.message) {
+                showNotification('يرجى ملء جميع الحقول المطلوبة', 'error');
+                return;
+            }
+            
+            if (!validateEmail(data.email)) {
+                showNotification('يرجى إدخال بريد إلكتروني صحيح', 'error');
+                return;
+            }
+            
+            // إظهار مؤشر التحميل
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+            submitBtn.disabled = true;
+            
+            try {
+                // إرسال الرسالة
+                const result = await sendEmail(data, data.email);
+                
+                if (result.success) {
+                    if (result.emailSent) {
+                        showNotification('✅ تم إرسال رسالتك بنجاح! سأتواصل معك قريباً.', 'success');
+                        showNotification(data.email, 'success');
+                    } else {
+                        showNotification('⚠️ تم حفظ رسالتك محلياً وسأطلع عليها قريباً', 'info');
+                    }
+                    
+                    // ✅ تنظيف الحقول بعد الإرسال الناجح
+                    this.reset();
+                    updateUnreadCount();
+                } else {
+                    showNotification('حدث خطأ أثناء إرسال رسالتك', 'error');
+                }
+            } catch (error) {
+                console.error('خطأ في إرسال الرسالة:', error);
+                showNotification('حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.', 'error');
+            } finally {
+                // إعادة زر الإرسال إلى حالته الأصلية
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
         });
-        
-        // تشغيل الرسوم المتحركة للمرة الأولى
-        handleScrollAnimations();
-        
-        // إنشاء الجسيمات
-        createParticles();
-        
-        // تشغيل العداد عند التمرير للقسم
-        let countersAnimated = false;
-        let skillsAnimated = false;
-        
-        const observerOptions = {
-            threshold: 0.5
-        };
-        
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !countersAnimated) {
-                    animateCounters();
-                    countersAnimated = true;
-                }
-            });
-        }, observerOptions);
-        
-        const skillsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !skillsAnimated) {
-                    animateSkillBars();
-                    skillsAnimated = true;
-                }
-            });
-        }, observerOptions);
-        
-        const statsSection = document.querySelector('.stats-section');
-        const skillsSection = document.querySelector('.skills-section');
-        
-        if (statsSection) statsObserver.observe(statsSection);
-        if (skillsSection) skillsObserver.observe(skillsSection);
+    }
+    
+    // =============================================
+    // التهيئة عند تحميل الصفحة
+    // =============================================
+    document.addEventListener('DOMContentLoaded', function() {
+        try {
+            startTypewriter();
+            startTerminal();
+            setupNavbar();
+            setupMobileMenu();
+            setupSmoothScroll();
+            setupScrollObserver();
+            createParticles();
+            setupContactForm();
+            
+            // تحميل الرسائل المحفوظة
+            try {
+                const saved = localStorage.getItem('messages');
+                if (saved) messages = JSON.parse(saved);
+                updateUnreadCount();
+            } catch (error) {
+                console.warn('Cannot load messages:', error);
+            }
+            
+            console.log('✅ تم تحميل الموقع بنجاح');
+        } catch (error) {
+            console.error('❌ خطأ في تحميل الموقع:', error);
+            // عرض رسالة للمستخدم
+            document.body.innerHTML = `
+                        <div style="display:flex;align-items:center;justify-content:center;min-height:100vh;flex-direction:column;text-align:center;padding:20px;background:#0f172a;color:white;">
+                            <h1 style="font-size:2rem;margin-bottom:20px;">مرحباً بك في موقعي</h1>
+                            <p style="color:#cbd5e1;font-size:1.2rem;max-width:600px;">حدث خطأ في تحميل الموقع. يرجى تحديث الصفحة أو المحاولة مرة أخرى.</p>
+                            <button onclick="location.reload()" style="margin-top:30px;padding:15px 40px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:white;border:none;border-radius:10px;font-size:1.2rem;cursor:pointer;">إعادة تحميل</button>
+                        </div>
+                    `;
+        }
     });
 </script>
 </body>
